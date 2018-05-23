@@ -27,7 +27,6 @@ package com.skapral.github.puzzler.github.itracker;
 
 import com.github.skapral.puzzler.core.IssueTracker;
 import com.github.skapral.puzzler.core.Puzzle;
-import com.github.skapral.puzzler.core.puzzle.PzlStatic;
 import com.skapral.github.puzzler.config.ConfigProperty;
 import com.skapral.github.puzzler.github.project.GithubProject;
 import org.apache.http.client.methods.CloseableHttpResponse;

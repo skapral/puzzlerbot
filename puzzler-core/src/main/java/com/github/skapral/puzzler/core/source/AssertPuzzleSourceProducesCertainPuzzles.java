@@ -56,6 +56,6 @@ public class AssertPuzzleSourceProducesCertainPuzzles implements Assertion {
                     .thenComparing(Puzzle::description)
                     ::compare
             )
-            .containsOnlyElementsOf(expectedPuzzles);
+            .containsExactlyElementsOf(expectedPuzzles);
     }
 }

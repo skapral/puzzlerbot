@@ -24,12 +24,3 @@
  */
 
 package com.skapral.github.puzzler.config;
-
-public class Cp_PORT extends CpOneOf {
-    public Cp_PORT() {
-        super(
-            new CpEnvironment("PORT"),
-            new CpStatic("5000")
-        );
-    }
-}

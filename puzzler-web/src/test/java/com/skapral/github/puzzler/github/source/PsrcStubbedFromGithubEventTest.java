@@ -47,11 +47,15 @@ class PsrcStubbedFromGithubEventTest extends TestsSuite {
     public PsrcStubbedFromGithubEventTest() {
         super(
             new TestCase(
-                "aa",
+                "test stub",
                 new AssertPuzzleSourceProducesCertainPuzzles(
                     new PsrcStubbedFromGithubEvent(
                         "issues",
                         EVENT_BODY
+                    ),
+                    new PzlStatic(
+                        "test",
+                        "descr"
                     ),
                     new PzlStatic(
                         "test",

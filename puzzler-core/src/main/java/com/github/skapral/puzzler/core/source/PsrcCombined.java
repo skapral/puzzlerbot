@@ -32,6 +32,11 @@ import io.vavr.collection.List;
 public class PsrcCombined implements PuzzleSource {
     private final List<PuzzleSource> sources;
 
+    /**
+     * Ctor.
+     *
+     * @param sources List of puzzle source to collect puzzles from.
+     */
     public PsrcCombined(List<PuzzleSource> sources) {
         this.sources = sources;
     }
