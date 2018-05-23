@@ -50,6 +50,39 @@
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
+    <name>Puzzler bot</name>
+    <description>PDD manager which manages puzzles through GitHub comments</description>
+    <url>https://github.com/skapral/puzzlerbot</url>
+    <scm>
+        <url>https://github.com/skapral/puzzlerbot.git</url>
+    </scm>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Kapralov Sergey</name>
+            <email>skapralov@mail.ru</email>
+            <timezone>UTC+03:00</timezone>
+        </developer>
+    </developers>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <snapshots>
