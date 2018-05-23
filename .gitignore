@@ -5,3 +5,4 @@
 **/*.iml
 **/jacoco.exec
 **/*.versionsBackup
+**/dependency-reduced-pom.xml
