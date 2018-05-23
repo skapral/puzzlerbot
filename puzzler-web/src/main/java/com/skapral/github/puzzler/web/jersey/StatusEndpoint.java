@@ -26,23 +26,26 @@
 package com.skapral.github.puzzler.web.jersey;
 
 import oo.atom.anno.NotAtom;
-import org.glassfish.jersey.server.ResourceConfig;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 /**
- * Jersey's resource config for the Puzzler's API.
+ * Status endpoint.
  *
  * @author Kapralov Sergey
  */
 @NotAtom
-public class PuzzlerAPI extends ResourceConfig {
+@Path("status")
+public class StatusEndpoint {
     /**
-     * Ctor.
+     * @return returns "OK"
      */
-    public PuzzlerAPI() {
-        registerClasses(
-            StatusEndpoint.class,
-            GithubHookEndpoint.class,
-            DefaultExceptionMapper.class
-        );
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    public String status() {
+        return "OK";
     }
 }
