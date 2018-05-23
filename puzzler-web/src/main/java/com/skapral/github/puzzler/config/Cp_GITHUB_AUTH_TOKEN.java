@@ -31,6 +31,9 @@ package com.skapral.github.puzzler.config;
  * @author Kapralov Sergey
  */
 public class Cp_GITHUB_AUTH_TOKEN extends CpEnvironment {
+    /**
+     * Ctor.
+     */
     public Cp_GITHUB_AUTH_TOKEN() {
         super("GITHUB_AUTH_TOKEN");
     }

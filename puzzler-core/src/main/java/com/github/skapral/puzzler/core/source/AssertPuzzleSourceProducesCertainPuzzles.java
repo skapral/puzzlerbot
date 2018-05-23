@@ -43,11 +43,23 @@ public class AssertPuzzleSourceProducesCertainPuzzles implements Assertion {
     private final PuzzleSource source;
     private final List<Puzzle> expectedPuzzles;
 
+    /**
+     * Ctor.
+     *
+     * @param source Puzzle source under the test.
+     * @param expectedPuzzles Expected puzzles.
+     */
     public AssertPuzzleSourceProducesCertainPuzzles(PuzzleSource source, List<Puzzle> expectedPuzzles) {
         this.source = source;
         this.expectedPuzzles = expectedPuzzles;
     }
 
+    /**
+     * Ctor.
+     *
+     * @param source Puzzle source under the test.
+     * @param expectedPuzzles Expected puzzles.
+     */
     public AssertPuzzleSourceProducesCertainPuzzles(PuzzleSource source, Puzzle... expectedPuzzles) {
         this(source, List.of(expectedPuzzles));
     }

@@ -43,6 +43,13 @@ import javax.ws.rs.core.Response;
 @NotAtom
 @Path("github")
 public class GithubHookEndpoint {
+    /**
+     * Github hook endpoint
+     * @param eventType Event type, obtained from X-GitHub-Event header.
+     * @param event Event body in JSON format
+     * @return HTTP response.
+     * @throws Exception If something went wrong.
+     */
     @POST
     @Consumes("application/json")
     @Produces("application/json")

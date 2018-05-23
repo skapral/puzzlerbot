@@ -37,6 +37,11 @@ import io.vavr.collection.List;
 public class PsrcInferred implements PuzzleSource {
     private final Inference inference;
 
+    /**
+     * Ctor.
+     *
+     * @param inference Inference.
+     */
     public PsrcInferred(Inference inference) {
         this.inference = inference;
     }

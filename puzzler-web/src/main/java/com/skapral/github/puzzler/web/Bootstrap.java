@@ -42,6 +42,12 @@ import java.net.URI;
  */
 @NotAtom
 public class Bootstrap {
+    /**
+     * Main.
+     *
+     * @param args CLI args.
+     * @throws Exception If something went wrong.
+     */
     public final static void main(String... args) throws Exception {
         ConfigProperty port = new Cp_PORT();
         String BASE_URI = "http://0.0.0.0:" + port.optionalValue().get() + "/";

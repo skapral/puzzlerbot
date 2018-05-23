@@ -31,7 +31,14 @@ package com.skapral.github.puzzler.github.project;
  * @author Kapralov Sergey
  */
 public interface GithubProject {
+    /**
+     * @return The owner of the repository.
+     */
     String owner();
+
+    /**
+     * @return The repository name.
+     */
     String repository();
 
     /**
@@ -43,6 +50,12 @@ public interface GithubProject {
         private final String owner;
         private final String repository;
 
+        /**
+         * Ctor.
+         *
+         * @param owner Repository owner.
+         * @param repository Repository name.
+         */
         public Static(String owner, String repository) {
             this.owner = owner;
             this.repository = repository;

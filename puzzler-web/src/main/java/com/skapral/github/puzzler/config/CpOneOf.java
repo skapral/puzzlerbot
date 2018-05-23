@@ -37,10 +37,20 @@ import io.vavr.control.Option;
 public class CpOneOf implements ConfigProperty {
     private final List<ConfigProperty> configProperties;
 
+    /**
+     * Ctor.
+     *
+     * @param configProperties Properties to search from.
+     */
     public CpOneOf(final List<ConfigProperty> configProperties) {
         this.configProperties = configProperties;
     }
 
+    /**
+     * Ctor.
+     *
+     * @param configProperties Properties to search from.
+     */
     public CpOneOf(final ConfigProperty... configProperties) {
         this(List.of(configProperties));
     }

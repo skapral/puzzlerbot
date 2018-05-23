@@ -33,6 +33,11 @@ import io.vavr.control.Option;
 public class CpEnvironment implements ConfigProperty {
     private final String envName;
 
+    /**
+     * Ctor.
+     *
+     * @param envName Environment variable's name.
+     */
     public CpEnvironment(final String envName) {
         this.envName = envName;
     }

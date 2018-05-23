@@ -38,6 +38,12 @@ public class OpPersistAllPuzzles implements Operation {
     private final PuzzleSource puzzleSource;
     private final IssueTracker issueTracker;
 
+    /**
+     * Ctor.
+     *
+     * @param puzzleSource Puzzle source to obtain puzzles from.
+     * @param issueTracker Issue tracker to persist puzzles to.
+     */
     public OpPersistAllPuzzles(PuzzleSource puzzleSource, IssueTracker issueTracker) {
         this.puzzleSource = puzzleSource;
         this.issueTracker = issueTracker;

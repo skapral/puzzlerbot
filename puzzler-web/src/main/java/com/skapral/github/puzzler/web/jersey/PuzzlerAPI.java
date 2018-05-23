@@ -35,6 +35,9 @@ import org.glassfish.jersey.server.ResourceConfig;
  */
 @NotAtom
 public class PuzzlerAPI extends ResourceConfig {
+    /**
+     * Ctor.
+     */
     public PuzzlerAPI() {
         registerClasses(
             GithubHookEndpoint.class,

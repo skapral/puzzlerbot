@@ -33,5 +33,8 @@ import io.vavr.control.Option;
  * @author Kapralov Sergey
  */
 public interface ConfigProperty {
+    /**
+     * @return optional value of the configuration property.
+     */
     Option<String> optionalValue();
 }

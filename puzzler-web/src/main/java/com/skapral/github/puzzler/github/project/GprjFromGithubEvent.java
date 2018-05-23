@@ -35,6 +35,11 @@ import org.json.JSONObject;
 public class GprjFromGithubEvent implements GithubProject {
     private final String eventBody;
 
+    /**
+     * Ctor.
+     *
+     * @param eventBody Github event body (JSON)
+     */
     public GprjFromGithubEvent(String eventBody) {
         this.eventBody = eventBody;
     }

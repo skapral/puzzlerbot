@@ -35,6 +35,12 @@ public class PzlStatic implements Puzzle {
     private final String title;
     private final String description;
 
+    /**
+     * Ctor.
+     *
+     * @param title Puzzle's title.
+     * @param description Puzzle's description.
+     */
     public PzlStatic(String title, String description) {
         this.title = title;
         this.description = description;

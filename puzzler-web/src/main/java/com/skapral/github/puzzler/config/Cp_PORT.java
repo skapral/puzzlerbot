@@ -31,6 +31,9 @@ package com.skapral.github.puzzler.config;
  * @author Kapralov Sergey
  */
 public class Cp_PORT extends CpOneOf {
+    /**
+     * Ctor.
+     */
     public Cp_PORT() {
         super(
             new CpEnvironment("PORT"),

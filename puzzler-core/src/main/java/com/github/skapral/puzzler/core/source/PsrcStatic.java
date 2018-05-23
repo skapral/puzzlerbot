@@ -37,10 +37,20 @@ import io.vavr.collection.List;
 public class PsrcStatic implements PuzzleSource {
     private final List<Puzzle> puzzles;
 
+    /**
+     * Ctor.
+     *
+     * @param puzzles Puzzles to emit.
+     */
     public PsrcStatic(List<Puzzle> puzzles) {
         this.puzzles = puzzles;
     }
 
+    /**
+     * Ctor.
+     *
+     * @param puzzles Puzzles to emit.
+     */
     public PsrcStatic(Puzzle... puzzles) {
         this(List.of(puzzles));
     }

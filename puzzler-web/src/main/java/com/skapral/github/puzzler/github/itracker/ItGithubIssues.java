@@ -46,6 +46,12 @@ public class ItGithubIssues implements IssueTracker {
     private final GithubProject project;
     private final ConfigProperty authToken;
 
+    /**
+     * Ctor.
+     *
+     * @param project Github project.
+     * @param authToken Github API authentication token.
+     */
     public ItGithubIssues(GithubProject project, ConfigProperty authToken) {
         this.project = project;
         this.authToken = authToken;

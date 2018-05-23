@@ -34,6 +34,10 @@ import io.vavr.control.Option;
 public class CpStatic implements ConfigProperty {
     private final String value;
 
+    /**
+     * Ctor.
+     * @param value The value of the property.
+     */
     public CpStatic(final String value) {
         this.value = value;
     }

@@ -39,7 +39,14 @@ public interface PuzzleSource {
      * @author Kapralov Sergey
      */
     interface Inference {
+        /**
+         * @return inferred puzzle source.
+         */
         PuzzleSource puzzleSource();
     }
+
+    /**
+     * @return Puzzles from this source.
+     */
     List<Puzzle> puzzles();
 }
