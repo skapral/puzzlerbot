@@ -137,9 +137,6 @@
         </profile>
         <profile>
             <id>extras</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <build>
                 <plugins>
                     <plugin>
