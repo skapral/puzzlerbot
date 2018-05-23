@@ -25,10 +25,20 @@
 
 package com.skapral.github.puzzler.github.project;
 
+/**
+ * Github project's coordinates.
+ *
+ * @author Kapralov Sergey
+ */
 public interface GithubProject {
     String owner();
     String repository();
 
+    /**
+     * Static Github project's coordinates.
+     *
+     * @author Kapralov Sergey
+     */
     class Static implements GithubProject {
         private final String owner;
         private final String repository;

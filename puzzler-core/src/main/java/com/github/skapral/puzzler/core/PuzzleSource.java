@@ -27,7 +27,17 @@ package com.github.skapral.puzzler.core;
 
 import io.vavr.collection.List;
 
+/**
+ * An entity that emits new puzzles.
+ *
+ * @author Kapralov Sergey
+ */
 public interface PuzzleSource {
+    /**
+     * A {@link PuzzleSource} inference
+     *
+     * @author Kapralov Sergey
+     */
     interface Inference {
         PuzzleSource puzzleSource();
     }

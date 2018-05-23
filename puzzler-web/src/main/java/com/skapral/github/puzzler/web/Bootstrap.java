@@ -27,7 +27,7 @@ package com.skapral.github.puzzler.web;
 
 import com.skapral.github.puzzler.config.ConfigProperty;
 import com.skapral.github.puzzler.config.Cp_PORT;
-import com.skapral.github.puzzler.web.jersey.JerseyApplication;
+import com.skapral.github.puzzler.web.jersey.PuzzlerAPI;
 import oo.atom.anno.NotAtom;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
@@ -35,13 +35,18 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import java.io.IOException;
 import java.net.URI;
 
+/**
+ * Starting point.
+ *
+ * @author Kapralov Sergey
+ */
 @NotAtom
 public class Bootstrap {
     public final static void main(String... args) throws Exception {
         ConfigProperty port = new Cp_PORT();
         String BASE_URI = "http://0.0.0.0:" + port.optionalValue().get() + "/";
         System.out.println(BASE_URI);
-        HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), new JerseyApplication());
+        HttpServer httpServer = GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), new PuzzlerAPI());
         try {
             httpServer.start();
         } catch (IOException ex) {

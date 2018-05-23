@@ -29,6 +29,12 @@ import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import io.vavr.collection.List;
 
+/**
+ * Puzzle source, which compines puzzles from a set
+ * of another sources to one list.
+ *
+ * @author Kapralov Sergey
+ */
 public class PsrcCombined implements PuzzleSource {
     private final List<PuzzleSource> sources;
 

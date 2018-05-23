@@ -25,6 +25,11 @@
 
 package com.skapral.github.puzzler.config;
 
+/**
+ * GITHUB_AUTH_TOKEN environment variable's value.
+ *
+ * @author Kapralov Sergey
+ */
 public class Cp_GITHUB_AUTH_TOKEN extends CpEnvironment {
     public Cp_GITHUB_AUTH_TOKEN() {
         super("GITHUB_AUTH_TOKEN");

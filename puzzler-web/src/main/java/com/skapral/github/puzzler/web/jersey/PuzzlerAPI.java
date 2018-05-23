@@ -28,9 +28,14 @@ package com.skapral.github.puzzler.web.jersey;
 import oo.atom.anno.NotAtom;
 import org.glassfish.jersey.server.ResourceConfig;
 
+/**
+ * Jersey's resource config for the Puzzler's API.
+ *
+ * @author Kapralov Sergey
+ */
 @NotAtom
-public class JerseyApplication extends ResourceConfig {
-    public JerseyApplication() {
+public class PuzzlerAPI extends ResourceConfig {
+    public PuzzlerAPI() {
         registerClasses(
             GithubHookEndpoint.class,
             DefaultExceptionMapper.class

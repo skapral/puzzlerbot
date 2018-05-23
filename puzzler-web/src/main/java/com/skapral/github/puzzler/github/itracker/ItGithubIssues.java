@@ -37,6 +37,11 @@ import org.json.JSONObject;
 
 import java.nio.charset.Charset;
 
+/**
+ * Github issue tracker ('issues' tab)
+ *
+ * @author Kapralov Sergey
+ */
 public class ItGithubIssues implements IssueTracker {
     private final GithubProject project;
     private final ConfigProperty authToken;

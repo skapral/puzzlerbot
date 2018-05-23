@@ -27,6 +27,11 @@ package com.skapral.github.puzzler.github.project;
 
 import org.json.JSONObject;
 
+/**
+ * Github project's coordinates, obtained from Github event JSON.
+ *
+ * @author Kapralov Sergey
+ */
 public class GprjFromGithubEvent implements GithubProject {
     private final String eventBody;
 

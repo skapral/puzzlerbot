@@ -25,6 +25,14 @@
 
 package com.github.skapral.puzzler.core;
 
+/**
+ * Atomic operation on the system.
+ *
+ * @author Kapralov Sergey
+ */
 public interface Operation {
+    /**
+     * Execute the operation.
+     */
     void execute();
 }

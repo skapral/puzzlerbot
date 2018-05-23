@@ -29,6 +29,11 @@ import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import io.vavr.collection.List;
 
+/**
+ * Puzzle source which provides static list of puzzles.
+ *
+ * @author Kapralov Sergey
+ */
 public class PsrcStatic implements PuzzleSource {
     private final List<Puzzle> puzzles;
 

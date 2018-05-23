@@ -28,6 +28,12 @@ package com.skapral.github.puzzler.config;
 import io.vavr.collection.List;
 import io.vavr.control.Option;
 
+/**
+ * Configuration property, value of which is obtained from another
+ * {@link ConfigProperty} instances, until one which defined is met.
+ *
+ * @author Kapralov Sergey
+ */
 public class CpOneOf implements ConfigProperty {
     private final List<ConfigProperty> configProperties;
 

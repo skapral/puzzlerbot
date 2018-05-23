@@ -27,6 +27,11 @@ package com.skapral.github.puzzler.config;
 
 import io.vavr.control.Option;
 
+/**
+ * Configuration property
+ *
+ * @author Kapralov Sergey
+ */
 public interface ConfigProperty {
     Option<String> optionalValue();
 }

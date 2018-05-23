@@ -26,6 +26,11 @@ package com.github.skapral.puzzler.core.puzzle;
 
 import com.github.skapral.puzzler.core.Puzzle;
 
+/**
+ * A puzzle with static data.
+ *
+ * @author Kapralov Sergey
+ */
 public class PzlStatic implements Puzzle {
     private final String title;
     private final String description;

@@ -31,6 +31,11 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
+/**
+ * Jersey default Exception mapper
+ *
+ * @author Kapralov Sergey
+ */
 @NotAtom
 @Provider
 public class DefaultExceptionMapper implements ExceptionMapper<Exception> {

@@ -28,6 +28,12 @@ import com.github.skapral.puzzler.core.IssueTracker;
 import com.github.skapral.puzzler.core.Operation;
 import com.github.skapral.puzzler.core.PuzzleSource;
 
+/**
+ * Operation that persists all puzzles from the provided source to the
+ * issue tracker.
+ *
+ * @author Kapralov Sergey
+ */
 public class OpPersistAllPuzzles implements Operation {
     private final PuzzleSource puzzleSource;
     private final IssueTracker issueTracker;

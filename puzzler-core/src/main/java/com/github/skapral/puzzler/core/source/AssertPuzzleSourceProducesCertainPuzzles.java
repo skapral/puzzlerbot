@@ -33,6 +33,12 @@ import org.assertj.core.api.Assertions;
 
 import java.util.Comparator;
 
+/**
+ * Assertion that fails if the puzzle source under test provides
+ * unexpected list of pizzles.
+ *
+ * @author Kapralov Sergey
+ */
 public class AssertPuzzleSourceProducesCertainPuzzles implements Assertion {
     private final PuzzleSource source;
     private final List<Puzzle> expectedPuzzles;

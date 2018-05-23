@@ -25,6 +25,11 @@
 
 package com.github.skapral.puzzler.core;
 
+/**
+ * A puzzle
+ *
+ * @author Kapralov Sergey
+ */
 public interface Puzzle {
     String title();
     String description();

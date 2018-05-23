@@ -25,6 +25,11 @@
 
 package com.skapral.github.puzzler.config;
 
+/**
+ * PORT environment variable's value.
+ *
+ * @author Kapralov Sergey
+ */
 public class Cp_PORT extends CpOneOf {
     public Cp_PORT() {
         super(

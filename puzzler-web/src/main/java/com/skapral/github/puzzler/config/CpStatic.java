@@ -26,6 +26,11 @@ package com.skapral.github.puzzler.config;
 
 import io.vavr.control.Option;
 
+/**
+ * Configuration property with static value
+ *
+ * @author Kapralov Sergey
+ */
 public class CpStatic implements ConfigProperty {
     private final String value;
 

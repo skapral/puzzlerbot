@@ -26,6 +26,10 @@ package com.skapral.github.puzzler.config;
 
 import io.vavr.control.Option;
 
+/**
+ * Configuration property, value of which is obtained from
+ * environment variable.
+ */
 public class CpEnvironment implements ConfigProperty {
     private final String envName;
 

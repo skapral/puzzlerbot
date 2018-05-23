@@ -29,6 +29,11 @@ import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import io.vavr.collection.List;
 
+/**
+ * Inferred puzzle source.
+ *
+ * @author Kapralov Sergey
+ */
 public class PsrcInferred implements PuzzleSource {
     private final Inference inference;
 

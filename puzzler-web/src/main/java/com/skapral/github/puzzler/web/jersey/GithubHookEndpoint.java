@@ -35,6 +35,11 @@ import oo.atom.anno.NotAtom;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
+/**
+ * The HTTP endpoint for Github hook
+ *
+ * @author Kapralov Sergey
+ */
 @NotAtom
 @Path("github")
 public class GithubHookEndpoint {
