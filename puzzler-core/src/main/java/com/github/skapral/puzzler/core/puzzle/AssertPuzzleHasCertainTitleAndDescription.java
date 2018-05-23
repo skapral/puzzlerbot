@@ -23,20 +23,39 @@
  *
  */
 
+package com.github.skapral.puzzler.core.puzzle;
+
+import com.github.skapral.puzzler.core.Puzzle;
+import oo.atom.tests.Assertion;
+import org.assertj.core.api.Assertions;
+
 /**
- * Puzzle that is parsed from some text using three-paragraph approach.
- * It splits the text to paragraphs and handles them in the following way:
- * <ul>
- *     <li>
- *         The paragraph which mentions the puzzler user is controlling paragraph:
- *         it is used to identify that the text is the puzzle and provide the metadata.
- *     </li>
- *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
- *     </li>
- *     <li>
- *         The rest non-controlling paragraphs are combined into description.
- *     </li>
- * </ul>
+ * Fails if the puzzle under test has title and/or description different
+ * from what are expected
+ *
+ * @author Kapralov Sergey
  */
-package com.github.skapral.puzzler.core;
+public class AssertPuzzleHasCertainTitleAndDescription implements Assertion {
+    private final Puzzle puzzle;
+    private final String title;
+    private final String description;
+
+    /**
+     * Ctor.
+     *
+     * @param puzzle Puzzle under test.
+     * @param title Expected title.
+     * @param description Expected description.
+     */
+    public AssertPuzzleHasCertainTitleAndDescription(Puzzle puzzle, String title, String description) {
+        this.puzzle = puzzle;
+        this.title = title;
+        this.description = description;
+    }
+
+    @Override
+    public final void check() throws Exception {
+        Assertions.assertThat(puzzle.title()).isEqualTo(title);
+        Assertions.assertThat(puzzle.description()).isEqualTo(description);
+    }
+}

@@ -23,20 +23,42 @@
  *
  */
 
+package com.github.skapral.puzzler.github.source;
+
+import com.github.skapral.puzzler.core.Puzzle;
+import com.github.skapral.puzzler.core.PuzzleSource;
+import io.vavr.collection.List;
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.stream.StreamSupport;
+
 /**
- * Puzzle that is parsed from some text using three-paragraph approach.
- * It splits the text to paragraphs and handles them in the following way:
- * <ul>
- *     <li>
- *         The paragraph which mentions the puzzler user is controlling paragraph:
- *         it is used to identify that the text is the puzzle and provide the metadata.
- *     </li>
- *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
- *     </li>
- *     <li>
- *         The rest non-controlling paragraphs are combined into description.
- *     </li>
- * </ul>
+ * Puzzle source from Github comments (JSON).
+ *
+ * @author Kapralov Sergey
+ * @todo #1 Unstab the {@link PsrcFromGithubComments#puzzles()} method.
+ *  It must go through the comment's list, parse them using threepars
+ *  approach (see {@link com.github.skapral.puzzler.core.text.threepars}),
+ *  extract puzzles from there and return to the client.
+ *
  */
-package com.github.skapral.puzzler.core;
+public class PsrcFromGithubComments implements PuzzleSource {
+    private final String comments;
+
+    /**
+     * Ctor.
+     *
+     * @param comments Github comments in JSON format.
+     */
+    public PsrcFromGithubComments(String comments) {
+        this.comments = comments;
+    }
+
+    @Override
+    public final List<Puzzle> puzzles() {
+        final JSONArray jsonComments = new JSONArray(comments);
+        //
+        return List.empty();
+    }
+}
