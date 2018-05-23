@@ -29,9 +29,6 @@ import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import io.vavr.collection.List;
 import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.stream.StreamSupport;
 
 /**
  * Puzzle source from Github comments (JSON).
