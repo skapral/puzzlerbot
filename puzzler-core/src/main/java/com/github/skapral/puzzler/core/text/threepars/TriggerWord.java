@@ -23,24 +23,16 @@
  *
  */
 
-/**
- * Three-paragraph approach for parsing text and preparing it for making puzzles.
- *
- * The text is splat to the paragraphs (non-empty pieces of text separated by newline).
- * Each paragraph is classified in the following way:
- *
- * <ul>
- *     <li>
- *         The paragraph which mentions the predefined trigger word (usually, the name
- *         of puzzlerbot user) is controlling paragraph: it is used to identify that
- *         the text is the puzzle and provide the metadata.
- *     </li>
- *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
- *     </li>
- *     <li>
- *         The rest non-controlling paragraphs are combined into description.
- *     </li>
- * </ul>
- */
 package com.github.skapral.puzzler.core.text.threepars;
+
+/**
+ * Trigger word, which is used to distinct controlling paragraphs from the rest.
+ *
+ * @author Kapralov Sergey
+ */
+public interface TriggerWord {
+    /**
+     * @return the trigger word string.
+     */
+    String value();
+}
