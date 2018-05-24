@@ -63,6 +63,6 @@ public class PzlUsingThreeParsText implements Puzzle {
         return text.paragraphs()
             .filter(p -> p.type() == Paragraph.Type.DESCRIPTION)
             .map(Paragraph::content)
-            .collect(Collectors.joining("/r/n"));
+            .collect(Collectors.joining("\r\n"));
     }
 }

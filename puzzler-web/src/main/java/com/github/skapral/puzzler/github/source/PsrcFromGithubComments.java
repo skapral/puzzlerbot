@@ -27,18 +27,19 @@ package com.github.skapral.puzzler.github.source;
 
 import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
+import com.github.skapral.puzzler.core.puzzle.PzlUsingThreeParsText;
+import com.github.skapral.puzzler.core.text.threepars.TxtStandard;
+import com.github.skapral.puzzler.github.text.threepars.TwPuzzlerbotUser;
 import io.vavr.collection.List;
 import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.util.stream.StreamSupport;
 
 /**
  * Puzzle source from Github comments (JSON).
  *
  * @author Kapralov Sergey
- * @todo #1 Unstab the {@link PsrcFromGithubComments#puzzles()} method.
- *  It must go through the comment's list, parse them using threepars
- *  approach (see {@link com.github.skapral.puzzler.core.text.threepars}),
- *  extract puzzles from there and return to the client.
- *
  */
 public class PsrcFromGithubComments implements PuzzleSource {
     private final String comments;
@@ -55,7 +56,14 @@ public class PsrcFromGithubComments implements PuzzleSource {
     @Override
     public final List<Puzzle> puzzles() {
         final JSONArray jsonComments = new JSONArray(comments);
-        //
-        return List.empty();
+        return StreamSupport.stream(jsonComments.spliterator(), false)
+            .map(o -> (JSONObject) o)
+            .map(o -> o.getString("body"))
+            .map(body -> new TxtStandard(
+                new TwPuzzlerbotUser(),
+                body
+            ))
+            .map(txt -> new PzlUsingThreeParsText(txt))
+            .collect(List.collector());
     }
 }
