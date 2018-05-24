@@ -25,7 +25,9 @@
 
 package com.github.skapral.puzzler.github.source;
 
-import oo.atom.anno.NotAtom;
+import com.github.skapral.puzzler.core.puzzle.PzlStatic;
+import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesCertainPuzzles;
+import oo.atom.tests.TestCase;
 import oo.atom.tests.TestsSuite;
 import org.apache.commons.io.IOUtils;
 
@@ -43,6 +45,19 @@ public class PsrcFromGithubCommentsTest extends TestsSuite {
     }
 
     public PsrcFromGithubCommentsTest() {
-        super();
+        super(
+            new TestCase(
+                "puzzle source parses JSON comments correctly",
+                new AssertPuzzleSourceProducesCertainPuzzles(
+                    new PsrcFromGithubComments(
+                        COMMENTS
+                    ),
+                    new PzlStatic(
+                        "Something went wrong with some subsystem",
+                        "**Steps to reproduce**:\r\n1. Step one\r\n2. Step two\r\n3. Step three\r\n\r\n**Expected result**:\r\nEverything went smooth\r\n\r\n**Actual result**:\r\nEverything goes apart"
+                    )
+                )
+            )
+        );
     }
 }

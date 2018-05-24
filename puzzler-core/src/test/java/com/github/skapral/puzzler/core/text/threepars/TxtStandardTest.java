@@ -95,6 +95,38 @@ class TxtStandardTest extends TestsSuite {
                         "@puzzlertest FYI"
                     )
                 )
+            ),
+            new TestCase(
+                "Multiline text with empty paragraphs, leading trigger",
+                new AssertTextInstanceProducesCertainParagraphs(
+                    new TxtStandard(
+                        new TwStatic("@puzzlertest"),
+                        String.join(
+                            "\r\n",
+                            "    ",
+                            "@puzzlertest FYI",
+                            "",
+                            "",
+                            "Deployment must be reconfigured",
+                            "\t  ",
+                            "Deployment must be reconfigured because of this and that",
+                            "",
+                            ""
+                        )
+                    ),
+                    new ParStatic(
+                        Paragraph.Type.CONTROLLING,
+                        "@puzzlertest FYI"
+                    ),
+                    new ParStatic(
+                        Paragraph.Type.TITLE,
+                        "Deployment must be reconfigured"
+                    ),
+                    new ParStatic(
+                        Paragraph.Type.DESCRIPTION,
+                        "Deployment must be reconfigured because of this and that"
+                    )
+                )
             )
         );
     }

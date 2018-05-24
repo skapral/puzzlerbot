@@ -29,7 +29,7 @@ import io.vavr.collection.List;
 import oo.atom.tests.Assertion;
 import org.assertj.core.api.Assertions;
 
-import java.util.Comparator;
+import java.util.function.Function;
 
 /**
  * Fails if the paragraphs, emitted by the text item, meet expectations.
@@ -63,11 +63,9 @@ public class AssertTextInstanceProducesCertainParagraphs implements Assertion {
 
     @Override
     public final void check() throws Exception {
-        Assertions.assertThat(text.paragraphs())
-            .usingElementComparator(
-                Comparator.comparing(Paragraph::type)
-                    .thenComparing(Paragraph::content)
-                    ::compare)
-            .containsExactlyElementsOf(expectedParagraphs);
+        Function<Paragraph, String> normalizer = p -> String.format("Paragraph(%s,%s)", p.type(), p.content());
+        Assertions
+            .assertThat(text.paragraphs().map(normalizer))
+            .containsExactlyElementsOf(expectedParagraphs.map(normalizer));
     }
 }

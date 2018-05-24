@@ -31,8 +31,6 @@ import oo.atom.tests.AssertAssertionPasses;
 import oo.atom.tests.TestCase;
 import oo.atom.tests.TestsSuite;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class AssertPuzzleSourceProducesCertainPuzzlesTest extends TestsSuite {
     public AssertPuzzleSourceProducesCertainPuzzlesTest() {
         super(

@@ -31,7 +31,7 @@ import io.vavr.collection.List;
 import oo.atom.tests.Assertion;
 import org.assertj.core.api.Assertions;
 
-import java.util.Comparator;
+import java.util.function.Function;
 
 /**
  * Assertion that fails if the puzzle source under test provides
@@ -66,14 +66,8 @@ public class AssertPuzzleSourceProducesCertainPuzzles implements Assertion {
 
     @Override
     public final void check() throws Exception {
-        final List<Puzzle> puzzles = source.puzzles();
-        Assertions.assertThat(puzzles)
-            .usingElementComparator(
-                Comparator
-                    .comparing(Puzzle::title)
-                    .thenComparing(Puzzle::description)
-                    ::compare
-            )
-            .containsExactlyElementsOf(expectedPuzzles);
+        final Function<Puzzle, String> normalizer = p -> String.format("Puzzle(%s, %s)", p.title(), p.description());
+        Assertions.assertThat(source.puzzles().map(normalizer))
+            .containsExactlyElementsOf(expectedPuzzles.map(normalizer));
     }
 }
