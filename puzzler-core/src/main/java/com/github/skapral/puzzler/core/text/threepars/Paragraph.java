@@ -23,20 +23,32 @@
  *
  */
 
+package com.github.skapral.puzzler.core.text.threepars;
+
 /**
- * Puzzle that is parsed from some text using three-paragraph approach.
- * It splits the text to paragraphs and handles them in the following way:
- * <ul>
- *     <li>
- *         The paragraph which mentions the puzzler user is controlling paragraph:
- *         it is used to identify that the text is the puzzle and provide the metadata.
- *     </li>
- *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
- *     </li>
- *     <li>
- *         The rest non-controlling paragraphs are combined into description.
- *     </li>
- * </ul>
+ * A text paragraph.
+ *
+ * @author Kapralov Sergey
  */
-package com.github.skapral.puzzler.core;
+public interface Paragraph {
+    /**
+     * Paragraph's type.
+     *
+     * @author Kapralov Sergey
+     */
+    enum Type {
+        TITLE,
+        DESCRIPTION,
+        CONTROLLING
+    }
+
+    /**
+     * @return Paragraph's type
+     */
+    Type type();
+
+    /**
+     * @return Paragraph's content
+     */
+    String content();
+}

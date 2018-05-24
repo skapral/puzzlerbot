@@ -23,20 +23,46 @@
  *
  */
 
+package com.github.skapral.puzzler.core.puzzle;
+
+import com.github.skapral.puzzler.core.Puzzle;
+import com.github.skapral.puzzler.core.text.threepars.Paragraph;
+import com.github.skapral.puzzler.core.text.threepars.Text;
+
+import java.util.stream.Collectors;
+
+
 /**
- * Puzzle that is parsed from some text using three-paragraph approach.
- * It splits the text to paragraphs and handles them in the following way:
- * <ul>
- *     <li>
- *         The paragraph which mentions the puzzler user is controlling paragraph:
- *         it is used to identify that the text is the puzzle and provide the metadata.
- *     </li>
- *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
- *     </li>
- *     <li>
- *         The rest non-controlling paragraphs are combined into description.
- *     </li>
- * </ul>
+ * Puzzler, which uses a text, parsed using three-paragraphs approach.
+ * (see {@link com.github.skapral.puzzler.core.text.threepars} for details)
+ *
+ * @author Kapralov Sergey
  */
-package com.github.skapral.puzzler.core;
+public class PzlUsingThreeParsText implements Puzzle {
+    private final Text text;
+
+    /**
+     * Ctor.
+     *
+     * @param text Text.
+     */
+    public PzlUsingThreeParsText(Text text) {
+        this.text = text;
+    }
+
+    @Override
+    public final String title() {
+        return text.paragraphs()
+            .filter(p -> p.type() == Paragraph.Type.TITLE)
+            .map(Paragraph::content)
+            .get(0);
+    }
+
+    @Override
+    public final String description() {
+        return text.paragraphs()
+            .filter(p -> p.type() == Paragraph.Type.DESCRIPTION)
+            .map(Paragraph::content)
+            .collect(Collectors.joining("/r/n"));
+    }
+}

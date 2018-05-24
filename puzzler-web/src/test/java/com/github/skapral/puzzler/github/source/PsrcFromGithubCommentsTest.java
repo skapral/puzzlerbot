@@ -23,20 +23,26 @@
  *
  */
 
-/**
- * Puzzle that is parsed from some text using three-paragraph approach.
- * It splits the text to paragraphs and handles them in the following way:
- * <ul>
- *     <li>
- *         The paragraph which mentions the puzzler user is controlling paragraph:
- *         it is used to identify that the text is the puzzle and provide the metadata.
- *     </li>
- *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
- *     </li>
- *     <li>
- *         The rest non-controlling paragraphs are combined into description.
- *     </li>
- * </ul>
- */
-package com.github.skapral.puzzler.core;
+package com.github.skapral.puzzler.github.source;
+
+import oo.atom.anno.NotAtom;
+import oo.atom.tests.TestsSuite;
+import org.apache.commons.io.IOUtils;
+
+import java.nio.charset.Charset;
+
+public class PsrcFromGithubCommentsTest extends TestsSuite {
+    private static final String COMMENTS;
+
+    static {
+        try {
+            COMMENTS = IOUtils.resourceToString("/testComments.json", Charset.defaultCharset());
+        } catch(Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+    public PsrcFromGithubCommentsTest() {
+        super();
+    }
+}
