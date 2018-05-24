@@ -25,42 +25,56 @@
 
 package com.github.skapral.puzzler.github.source;
 
-import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
-import com.github.skapral.puzzler.core.puzzle.PzlStatic;
-import io.vavr.collection.List;
-import org.json.JSONObject;
+import com.github.skapral.puzzler.core.source.PsrcInferred;
 
 /**
- * Puzzle source which just creates two new issues with dummy title and description once one is closed.
- * Used as a stub for the initial prototype, to be replaced in future.
+ * Puzzles source, which parses puzzles from arbitrary Github event.
  *
  * @author Kapralov Sergey
  */
-@Deprecated
-public class PsrcStubbedFromGithubEvent implements PuzzleSource {
-    private final String eventType;
-    private final String eventBody;
-
+public class PsrcFromGithubEvent extends PsrcInferred {
     /**
      * Ctor.
      *
      * @param eventType Github event's type (usually passed via X-GitHub-Event header).
      * @param eventBody Github event's body in JSON format.
      */
-    public PsrcStubbedFromGithubEvent(String eventType, String eventBody) {
-        this.eventType = eventType;
-        this.eventBody = eventBody;
+    public PsrcFromGithubEvent(String eventType, String eventBody) {
+        super(
+            new Inference(
+                eventType,
+                eventBody
+            )
+        );
     }
 
-    @Override
-    public final List<Puzzle> puzzles() {
-        final JSONObject object = new JSONObject(eventBody);
-        if(!object.getString("action").equals("closed")) {
-            return List.empty();
+    /**
+     * The {@link PsrcFromGithubEvent} inference.
+     *
+     * @author Kapralov Sergey
+     */
+    private static class Inference implements PuzzleSource.Inference {
+        private final String eventType;
+        private final String eventBody;
+
+        /**
+         * Ctor.
+         *
+         * @param eventType Github event's type (usually passed via X-GitHub-Event header).
+         * @param eventBody Github event's body in JSON format.
+         */
+        public Inference(String eventType, String eventBody) {
+            this.eventType = eventType;
+            this.eventBody = eventBody;
         }
-        /*final String url = object.getJSONObject("issue").getString("comments_url");
-        System.out.println(url);*/
-        return List.of(new PzlStatic("test", "descr"), new PzlStatic("test", "descr"));
+
+        @Override
+        public final PuzzleSource puzzleSource() {
+            if("issues".equals(eventType)) {
+                return new PsrcFromGithubIssueEvent(eventBody);
+            }
+            throw new UnsupportedOperationException("Unsupported event type - " + eventType);
+        }
     }
 }
