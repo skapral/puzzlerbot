@@ -35,7 +35,7 @@ Puzzler bot's approach is to scan for puzzles in github comments after
 the issue or pull request is closed. Github comments tend to be more stable than 
 the code base, they may exist when even no code is written yet.
 
-Details of how the puzzles are handled by Puzzler bot will be provided later. 
+@todo #8 Describe how to properly place puzzles so that puzzler bot discovers them. 
 
 ## Principles:
 

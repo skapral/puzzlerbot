@@ -27,40 +27,28 @@ package com.github.skapral.puzzler.github.source;
 
 import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
-import com.github.skapral.puzzler.core.puzzle.PzlStatic;
 import io.vavr.collection.List;
-import org.json.JSONObject;
 
 /**
- * Puzzle source which just creates two new issues with dummy title and description once one is closed.
- * Used as a stub for the initial prototype, to be replaced in future.
+ * Puzzle source, which emits puzzles from github issue event.
  *
  * @author Kapralov Sergey
+ * @todo #8 Unstub PsrcFromGithubIssueEvent.
  */
-@Deprecated
-public class PsrcStubbedFromGithubEvent implements PuzzleSource {
-    private final String eventType;
-    private final String eventBody;
+public class PsrcFromGithubIssueEvent implements PuzzleSource {
+    private final String githubEvent;
 
     /**
      * Ctor.
      *
-     * @param eventType Github event's type (usually passed via X-GitHub-Event header).
-     * @param eventBody Github event's body in JSON format.
+     * @param githubEvent Github issue event.
      */
-    public PsrcStubbedFromGithubEvent(String eventType, String eventBody) {
-        this.eventType = eventType;
-        this.eventBody = eventBody;
+    public PsrcFromGithubIssueEvent(String githubEvent) {
+        this.githubEvent = githubEvent;
     }
 
     @Override
     public final List<Puzzle> puzzles() {
-        final JSONObject object = new JSONObject(eventBody);
-        if(!object.getString("action").equals("closed")) {
-            return List.empty();
-        }
-        /*final String url = object.getJSONObject("issue").getString("comments_url");
-        System.out.println(url);*/
-        return List.of(new PzlStatic("test", "descr"), new PzlStatic("test", "descr"));
+        throw new UnsupportedOperationException();
     }
 }
