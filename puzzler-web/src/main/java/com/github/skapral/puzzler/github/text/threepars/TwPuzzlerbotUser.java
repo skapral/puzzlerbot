@@ -23,24 +23,20 @@
  *
  */
 
+package com.github.skapral.puzzler.github.text.threepars;
+
+import com.github.skapral.puzzler.core.text.threepars.TwStatic;
+
 /**
- * Three-paragraph approach for parsing text and preparing it for making puzzles.
+ * Puzzler bot's account used as trigger word for creating puzzles.
  *
- * The text is splat to the paragraphs (non-empty pieces of text separated by newline).
- * Each paragraph is classified in the following way:
- *
- * <ul>
- *     <li>
- *         The paragraph which mentions the predefined trigger word (usually, the name
- *         of puzzlerbot user) is controlling paragraph: it is used to identify that
- *         the text is the puzzle and provide the metadata.
- *     </li>
- *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
- *     </li>
- *     <li>
- *         The rest non-controlling paragraphs are combined into description.
- *     </li>
- * </ul>
+ * @author Kapralov Sergey
  */
-package com.github.skapral.puzzler.core.text.threepars;
+public class TwPuzzlerbotUser extends TwStatic {
+    /**
+     * Ctor.
+     */
+    public TwPuzzlerbotUser() {
+        super("@puzzlerbot");
+    }
+}
