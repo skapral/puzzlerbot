@@ -93,16 +93,4 @@ public class ItGithubIssues implements IssueTracker {
             throw new RuntimeException(ex);
         }
     }
-
-/*    public static final void main(String... args) {
-        new ItGithubIssues(
-            new GithubProject.Static("skapral", "_testing"),
-            " 09d81461155f51a9a4af3c27d19b384f36dc7926"
-        ).persistPuzzle(
-            new PzlStatic(
-                "The title",
-                "The description"
-            )
-        );
-    }*/
 }

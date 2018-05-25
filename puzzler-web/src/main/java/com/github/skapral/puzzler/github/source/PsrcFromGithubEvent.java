@@ -25,8 +25,14 @@
 
 package com.github.skapral.puzzler.github.source;
 
+import com.github.skapral.puzzler.config.ConfigProperty;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import com.github.skapral.puzzler.core.source.PsrcInferred;
+import org.apache.commons.io.IOUtils;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.HttpClients;
+import org.json.JSONObject;
 
 /**
  * Puzzles source, which parses puzzles from arbitrary Github event.
@@ -39,12 +45,14 @@ public class PsrcFromGithubEvent extends PsrcInferred {
      *
      * @param eventType Github event's type (usually passed via X-GitHub-Event header).
      * @param eventBody Github event's body in JSON format.
+     * @param authToken Github API authentication token
      */
-    public PsrcFromGithubEvent(String eventType, String eventBody) {
+    public PsrcFromGithubEvent(String eventType, String eventBody, ConfigProperty authToken) {
         super(
             new Inference(
                 eventType,
-                eventBody
+                eventBody,
+                authToken
             )
         );
     }
@@ -57,24 +65,49 @@ public class PsrcFromGithubEvent extends PsrcInferred {
     private static class Inference implements PuzzleSource.Inference {
         private final String eventType;
         private final String eventBody;
+        private final ConfigProperty authToken;
 
         /**
          * Ctor.
          *
          * @param eventType Github event's type (usually passed via X-GitHub-Event header).
          * @param eventBody Github event's body in JSON format.
+         * @param authToken Github API authentication token
          */
-        public Inference(String eventType, String eventBody) {
+        public Inference(String eventType, String eventBody, ConfigProperty authToken) {
             this.eventType = eventType;
             this.eventBody = eventBody;
+            this.authToken = authToken;
         }
 
         @Override
         public final PuzzleSource puzzleSource() {
+            JSONObject obj = new JSONObject(eventBody);
             if("issues".equals(eventType)) {
-                return new PsrcFromGithubIssueEvent(eventBody);
+                obj = obj.getJSONObject("issue");
             }
-            throw new UnsupportedOperationException("Unsupported event type - " + eventType);
+            if("pull_request".equals(eventType)) {
+                obj = obj.getJSONObject("pull_request");
+            }
+            final String commentsUrl = obj.getString("comments");
+            final HttpGet request = new HttpGet(commentsUrl);
+            authToken.optionalValue().peek(_authToken ->
+                request.addHeader(
+                    "Authorization",
+                    _authToken
+                )
+            );
+            try {
+                final CloseableHttpResponse response = HttpClients.createDefault().execute(request);
+                if(response.getStatusLine().getStatusCode() > 299) {
+                    throw new RuntimeException();
+                }
+                return new PsrcFromGithubComments(
+                    IOUtils.toString(response.getEntity().getContent(), "UTF-8")
+                );
+            } catch(Exception ex) {
+                throw new RuntimeException(ex);
+            }
         }
     }
 }
