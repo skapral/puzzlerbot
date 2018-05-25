@@ -25,19 +25,35 @@
 
 package com.github.skapral.puzzler.github.mock;
 
+import oo.atom.tests.Assertion;
+
 /**
- * HTTP mock server simulating Github API
+ * Assertion on up-and-running Github mock server
  *
  * @author Kapralov Sergey
  */
-public interface GithubMockServer {
-    /**
-     * Bootstraps the server instance.
-     */
-    void bootstrap();
+public class AssertAssumingMockServer implements Assertion {
+    private final GithubMockServer server;
+    private final Assertion assertion;
 
     /**
-     * Destroys the server instance.
+     * Ctor.
+     *
+     * @param server Mock server.
+     * @param assertion Assertion to check.
      */
-    void destroy();
+    public AssertAssumingMockServer(GithubMockServer server, Assertion assertion) {
+        this.server = server;
+        this.assertion = assertion;
+    }
+
+    @Override
+    public final void check() throws Exception {
+        try {
+            server.bootstrap();
+            assertion.check();
+        } finally {
+            server.destroy();
+        }
+    }
 }
