@@ -24,3 +24,35 @@
  */
 
 package com.github.skapral.puzzler.github.location;
+
+/**
+ * Static Github API.
+ *
+ * @author Kapralov Sergey
+ */
+public class GhapiStatic implements GithubAPI {
+    private final String url;
+    private final String authToken;
+
+    /**
+     * Ctor.
+     *
+     * @param url Github API URL.
+     * @param authToken Github authorization token.
+     */
+    public GhapiStatic(String url, String authToken) {
+        this.url = url;
+        this.authToken = authToken;
+    }
+
+    @Override
+    public final String url() {
+        return url;
+    }
+
+    @Override
+    public final String authenticationToken() {
+        return authToken;
+    }
+}
+

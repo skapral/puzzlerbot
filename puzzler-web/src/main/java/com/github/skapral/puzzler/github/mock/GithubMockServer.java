@@ -23,4 +23,30 @@
  *
  */
 
-package com.github.skapral.puzzler.github.location;
+package com.github.skapral.puzzler.github.mock;
+
+import com.github.skapral.puzzler.github.location.GithubAPI;
+
+/**
+ * HTTP mock server simulating Github API
+ *
+ * @author Kapralov Sergey
+ * @todo #18 Implement {@link GithubMockServer} and cover
+ *  objects which access Github API with tests.
+ */
+public interface GithubMockServer {
+    /**
+     * @return Github API.
+     */
+    GithubAPI api();
+
+    /**
+     * Bootstraps the server instance.
+     */
+    void bootstrap();
+
+    /**
+     * Destroys the server instance.
+     */
+    void destroy();
+}

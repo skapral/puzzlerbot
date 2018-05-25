@@ -29,8 +29,6 @@ package com.github.skapral.puzzler.github.location;
  * Github API access information.
  *
  * @author Kapralov Sergey
- * @todo #2 refactor all objects, which work with Github API, to encapsulate and use
- *  {@link GithubAPI}.
  */
 public interface GithubAPI {
     /**

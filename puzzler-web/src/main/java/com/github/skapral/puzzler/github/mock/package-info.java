@@ -23,4 +23,4 @@
  *
  */
 
-package com.github.skapral.puzzler.github.location;
+package com.github.skapral.puzzler.github.mock;
