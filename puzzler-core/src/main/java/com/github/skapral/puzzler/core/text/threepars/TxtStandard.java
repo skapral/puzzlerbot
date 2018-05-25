@@ -39,6 +39,8 @@ import java.util.stream.IntStream;
  * omitting leading and trailing empty paragraphs.
  *
  * @author Kapralov Sergey
+ * @todo #7 Split this object to two: one for splitting text to paragraphs,
+ *  another for trimming empty paragraphs in the beginning and end.
  */
 public class TxtStandard implements Text {
     private final TriggerWord triggerWord;
