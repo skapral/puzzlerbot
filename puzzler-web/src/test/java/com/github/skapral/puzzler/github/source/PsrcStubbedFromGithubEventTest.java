@@ -34,11 +34,11 @@ import org.apache.commons.io.IOUtils;
 import java.nio.charset.Charset;
 
 class PsrcStubbedFromGithubEventTest extends TestsSuite {
-    private static final String EVENT_BODY;
+    private static final String ISSUE_EVENT;
 
     static {
         try {
-            EVENT_BODY = IOUtils.resourceToString("/testGithubHook.json", Charset.defaultCharset());
+            ISSUE_EVENT = IOUtils.resourceToString("/testIssueEvent.json", Charset.defaultCharset());
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -51,7 +51,7 @@ class PsrcStubbedFromGithubEventTest extends TestsSuite {
                 new AssertPuzzleSourceProducesCertainPuzzles(
                     new PsrcStubbedFromGithubEvent(
                         "issues",
-                        EVENT_BODY
+                        ISSUE_EVENT
                     ),
                     new PzlStatic(
                         "test",
