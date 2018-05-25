@@ -28,6 +28,8 @@ package com.github.skapral.puzzler.github.source;
 import com.github.skapral.puzzler.config.ConfigProperty;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import com.github.skapral.puzzler.core.source.PsrcInferred;
+import com.github.skapral.puzzler.core.source.PsrcStatic;
+import io.vavr.control.Option;
 import org.apache.commons.io.IOUtils;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
@@ -82,32 +84,36 @@ public class PsrcFromGithubEvent extends PsrcInferred {
 
         @Override
         public final PuzzleSource puzzleSource() {
-            JSONObject obj = new JSONObject(eventBody);
+            JSONObject jsonObject = new JSONObject(eventBody);
             if("issues".equals(eventType)) {
-                obj = obj.getJSONObject("issue");
+                jsonObject = jsonObject.getJSONObject("issue");
             }
             if("pull_request".equals(eventType)) {
-                obj = obj.getJSONObject("pull_request");
+                jsonObject = jsonObject.getJSONObject("pull_request");
             }
-            final String commentsUrl = obj.getString("comments");
-            final HttpGet request = new HttpGet(commentsUrl);
-            authToken.optionalValue().peek(_authToken ->
-                request.addHeader(
-                    "Authorization",
-                    _authToken
-                )
-            );
-            try {
-                final CloseableHttpResponse response = HttpClients.createDefault().execute(request);
-                if(response.getStatusLine().getStatusCode() > 299) {
-                    throw new RuntimeException();
-                }
-                return new PsrcFromGithubComments(
-                    IOUtils.toString(response.getEntity().getContent(), "UTF-8")
-                );
-            } catch(Exception ex) {
-                throw new RuntimeException(ex);
-            }
+            return Option.of(jsonObject)
+                .<PuzzleSource>map(obj -> {
+                    final String commentsUrl = obj.getString("comments_url");
+                    final HttpGet request = new HttpGet(commentsUrl);
+                    authToken.optionalValue().peek(_authToken ->
+                        request.addHeader(
+                            "Authorization",
+                            _authToken
+                        )
+                    );
+                    try {
+                        final CloseableHttpResponse response = HttpClients.createDefault().execute(request);
+                        if(response.getStatusLine().getStatusCode() > 299) {
+                            throw new RuntimeException();
+                        }
+                        return new PsrcFromGithubComments(
+                            IOUtils.toString(response.getEntity().getContent(), "UTF-8")
+                        );
+                    } catch(Exception ex) {
+                        throw new RuntimeException(ex);
+                    }
+                })
+                .getOrElse(() -> new PsrcStatic());
         }
     }
 }

@@ -33,6 +33,7 @@ import com.github.skapral.puzzler.github.text.threepars.TwPuzzlerbotUser;
 import io.vavr.collection.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import static com.github.skapral.puzzler.core.text.threepars.Paragraph.Type.*;
 
 import java.util.stream.StreamSupport;
 
@@ -63,6 +64,7 @@ public class PsrcFromGithubComments implements PuzzleSource {
                 new TwPuzzlerbotUser(),
                 body
             ))
+            .filter(txt -> txt.paragraphs().exists(p -> p.type() == CONTROLLING))
             .map(txt -> new PzlUsingThreeParsText(txt))
             .collect(List.collector());
     }
