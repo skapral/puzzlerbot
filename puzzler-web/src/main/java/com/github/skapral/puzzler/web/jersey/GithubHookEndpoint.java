@@ -27,6 +27,7 @@ package com.github.skapral.puzzler.web.jersey;
 
 import com.github.skapral.puzzler.config.Cp_GITHUB_AUTH_TOKEN;
 import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
+import com.github.skapral.puzzler.github.location.GhapiProduction;
 import com.github.skapral.puzzler.github.source.PsrcStubbedFromGithubEvent;
 import com.github.skapral.puzzler.github.itracker.ItGithubIssues;
 import com.github.skapral.puzzler.github.project.GprjFromGithubEvent;
@@ -61,10 +62,12 @@ public class GithubHookEndpoint {
                 event
             ),
             new ItGithubIssues(
+                new GhapiProduction(
+                    new Cp_GITHUB_AUTH_TOKEN()
+                ),
                 new GprjFromGithubEvent(
                     event
-                ),
-                new Cp_GITHUB_AUTH_TOKEN()
+                )
             )
         ).execute();
         return Response.ok("{}").build();

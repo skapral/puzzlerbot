@@ -25,9 +25,9 @@
 
 package com.github.skapral.puzzler.github.itracker;
 
-import com.github.skapral.puzzler.config.ConfigProperty;
 import com.github.skapral.puzzler.core.IssueTracker;
 import com.github.skapral.puzzler.core.Puzzle;
+import com.github.skapral.puzzler.github.location.GithubAPI;
 import com.github.skapral.puzzler.github.project.GithubProject;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
@@ -43,18 +43,18 @@ import java.nio.charset.Charset;
  * @author Kapralov Sergey
  */
 public class ItGithubIssues implements IssueTracker {
+    private final GithubAPI api;
     private final GithubProject project;
-    private final ConfigProperty authToken;
 
     /**
      * Ctor.
      *
+     * @param api Github API.
      * @param project Github project.
-     * @param authToken Github API authentication token.
      */
-    public ItGithubIssues(GithubProject project, ConfigProperty authToken) {
+    public ItGithubIssues(GithubAPI api, GithubProject project) {
+        this.api = api;
         this.project = project;
-        this.authToken = authToken;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class ItGithubIssues implements IssueTracker {
             body.put("body", puzzle.description());
             HttpPost request = new HttpPost(
                 String.format(
-                    "https://api.github.com/repos/%s/%s/issues",
+                    api.url() + "/repos/%s/%s/issues",
                     project.owner(),
                     project.repository()
                 )
@@ -76,7 +76,7 @@ public class ItGithubIssues implements IssueTracker {
             );
             request.addHeader(
                 "Authorization",
-                String.format("token %s", authToken.optionalValue().get())
+                String.format("token %s", api.authenticationToken())
             );
             request.addHeader(
                 "Content-Type",
