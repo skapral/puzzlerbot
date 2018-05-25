@@ -49,6 +49,7 @@ public class GithubHookEndpoint {
      * @param event Event body in JSON format
      * @return HTTP response.
      * @throws Exception If something went wrong.
+     * @todo #2 Replace {@link PsrcStubbedFromGithubEvent} with {@link com.github.skapral.puzzler.github.source.PsrcFromGithubEvent}.
      */
     @POST
     @Consumes("application/json")
