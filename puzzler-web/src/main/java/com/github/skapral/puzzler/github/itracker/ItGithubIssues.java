@@ -41,6 +41,7 @@ import java.nio.charset.Charset;
  * Github issue tracker ('issues' tab)
  *
  * @author Kapralov Sergey
+ * @todo #20 Improve test coverage for {@link ItGithubIssues}.
  */
 public class ItGithubIssues implements IssueTracker {
     private final GithubAPI api;

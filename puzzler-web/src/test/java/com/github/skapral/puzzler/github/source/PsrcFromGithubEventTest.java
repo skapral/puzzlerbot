@@ -39,11 +39,13 @@ import java.nio.charset.Charset;
 class PsrcFromGithubEventTest extends TestsSuite {
     private static final String COMMENTS;
     private static final String ISSUE_EVENT;
+    private static final String PR_EVENT;
 
     static {
         try {
-            ISSUE_EVENT = IOUtils.resourceToString("/testIssueEvent.json", Charset.defaultCharset());
             COMMENTS = IOUtils.resourceToString("/testComments.json", Charset.defaultCharset());
+            ISSUE_EVENT = IOUtils.resourceToString("/testIssueEvent.json", Charset.defaultCharset());
+            PR_EVENT = IOUtils.resourceToString("/testPullRequestEvent.json", Charset.defaultCharset());
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -64,6 +66,39 @@ class PsrcFromGithubEventTest extends TestsSuite {
                         new PsrcFromGithubEvent(
                             "issues",
                             ISSUE_EVENT,
+                            new CpStatic("fakeToken")
+                        ),
+                        new PzlStatic(
+                            "Something went wrong with some subsystem",
+                            String.join(
+                                "\r\n",
+                                "**Steps to reproduce**:",
+                                "1. Step one",
+                                "2. Step two",
+                                "3. Step three",
+                                "",
+                                "**Expected result**:",
+                                "Everything went smooth",
+                                "",
+                                "**Actual result**:",
+                                "Everything goes apart"
+                            )
+                        )
+                    )
+                )
+            ),
+            new TestCase(
+                "source produces correct puzzles from pull request event",
+                new AssertAssumingMockServer(
+                    new GmsImplementation(
+                        8080,
+                        req -> req.withPath("/repos/skapral/_testing/issues/14/comments"),
+                        res -> res.withBody(COMMENTS)
+                    ),
+                    new AssertPuzzleSourceProducesCertainPuzzles(
+                        new PsrcFromGithubEvent(
+                            "pull_request",
+                            PR_EVENT,
                             new CpStatic("fakeToken")
                         ),
                         new PzlStatic(
