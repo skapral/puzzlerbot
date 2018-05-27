@@ -39,7 +39,7 @@ public class PuzzlerAPI extends ResourceConfig {
      * Ctor.
      */
     public PuzzlerAPI() {
-        registerClasses(
+        super(
             StatusEndpoint.class,
             GithubHookEndpoint.class,
             DefaultExceptionMapper.class
