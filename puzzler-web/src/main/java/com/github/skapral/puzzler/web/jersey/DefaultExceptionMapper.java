@@ -27,6 +27,8 @@ package com.github.skapral.puzzler.web.jersey;
 
 import oo.atom.anno.NotAtom;
 
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -38,9 +40,10 @@ import javax.ws.rs.ext.Provider;
  */
 @NotAtom
 @Provider
-public class DefaultExceptionMapper implements ExceptionMapper<Exception> {
+public class DefaultExceptionMapper implements ExceptionMapper<Throwable> {
     @Override
-    public final Response toResponse(final Exception e) {
+    @Produces(MediaType.TEXT_PLAIN)
+    public final Response toResponse(final Throwable e) {
         e.printStackTrace();
         return Response.serverError().build();
     }

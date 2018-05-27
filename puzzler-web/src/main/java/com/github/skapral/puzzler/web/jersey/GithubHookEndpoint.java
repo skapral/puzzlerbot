@@ -28,7 +28,7 @@ package com.github.skapral.puzzler.web.jersey;
 import com.github.skapral.puzzler.config.Cp_GITHUB_AUTH_TOKEN;
 import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
 import com.github.skapral.puzzler.github.location.GhapiProduction;
-import com.github.skapral.puzzler.github.source.PsrcStubbedFromGithubEvent;
+import com.github.skapral.puzzler.github.source.PsrcFromGithubEvent;
 import com.github.skapral.puzzler.github.itracker.ItGithubIssues;
 import com.github.skapral.puzzler.github.project.GprjFromGithubEvent;
 import oo.atom.anno.NotAtom;
@@ -50,16 +50,16 @@ public class GithubHookEndpoint {
      * @param event Event body in JSON format
      * @return HTTP response.
      * @throws Exception If something went wrong.
-     * @todo #2 Replace {@link PsrcStubbedFromGithubEvent} with {@link com.github.skapral.puzzler.github.source.PsrcFromGithubEvent}.
      */
     @POST
     @Consumes("application/json")
     @Produces("application/json")
     public final Response githubHook(@HeaderParam("X-GitHub-Event") final String eventType, final String event) throws Exception {
         new OpPersistAllPuzzles(
-            new PsrcStubbedFromGithubEvent(
+            new PsrcFromGithubEvent(
                 eventType,
-                event
+                event,
+                new Cp_GITHUB_AUTH_TOKEN()
             ),
             new ItGithubIssues(
                 new GhapiProduction(
