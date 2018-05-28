@@ -2,7 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/skapral/puzzlerbot/master.svg)](https://travis-ci.org/skapral/puzzlerbot)
 [![Codecov](https://codecov.io/gh/skapral/puzzlerbot/branch/master/graph/badge.svg)](https://codecov.io/gh/skapral/puzzlerbot)
-[![Heroku](https://heroku-badge.herokuapp.com/?app=puzzler-bot)](https://puzzler-bot.herokuapp.com/status)
+@todo #31 to add some badge which will show the `@puzzlerbot`'s status.
 
 ## Notice:
 
@@ -43,8 +43,8 @@ the code base, they may exist when even no code is written yet.
 
 ## Principles:
 
-- Puzzler bot is not a replacement for 0pdd. It will be always possible to use
-them both in one project.
+- `@puzzlerbot` is not a replacement for `0pdd`. It will be always possible to use
+them both in one project without conflicts.
 
 ## Quick setup:
 
