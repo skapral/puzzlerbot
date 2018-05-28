@@ -23,27 +23,18 @@
  *
  */
 
-package com.github.skapral.puzzler.web.jersey;
+package com.github.skapral.puzzler.core.operation;
 
-import oo.atom.anno.NotAtom;
-import org.glassfish.jersey.server.ResourceConfig;
+import com.github.skapral.puzzler.core.Operation;
 
 /**
- * Jersey's resource config for the Puzzler's API.
+ * Operation which does nothing.
  *
  * @author Kapralov Sergey
  */
-@NotAtom
-public class PuzzlerAPI extends ResourceConfig {
-    /**
-     * Ctor.
-     */
-    public PuzzlerAPI() {
-        super(
-            StatusEndpoint.class,
-            GithubHookEndpoint.class,
-            DefaultExceptionMapper.class,
-            AuthenticationExceptionMapper.class
-        );
+public class OpDoNothing implements Operation {
+    @Override
+    public final void execute() {
+        // Intentionally do nothing.
     }
 }

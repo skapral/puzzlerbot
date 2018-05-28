@@ -26,15 +26,21 @@
 package com.github.skapral.puzzler.web.jersey;
 
 import com.github.skapral.puzzler.config.Cp_GITHUB_AUTH_TOKEN;
+import com.github.skapral.puzzler.config.Cp_GITHUB_HOOK_SECRET;
 import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
-import com.github.skapral.puzzler.github.location.GhapiProduction;
-import com.github.skapral.puzzler.github.source.PsrcFromGithubEvent;
 import com.github.skapral.puzzler.github.itracker.ItGithubIssues;
+import com.github.skapral.puzzler.github.location.GhapiProduction;
+import com.github.skapral.puzzler.github.operation.OpValidatingEventSignature;
 import com.github.skapral.puzzler.github.project.GprjFromGithubEvent;
+import com.github.skapral.puzzler.github.source.PsrcFromGithubEvent;
 import oo.atom.anno.NotAtom;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
+import java.util.Objects;
+
+import static com.github.skapral.puzzler.web.jersey.AuthenticationExceptionMapper.AuthenticationException;
+
 
 /**
  * The HTTP endpoint for Github hook
@@ -47,6 +53,7 @@ public class GithubHookEndpoint {
     /**
      * Github hook endpoint
      * @param eventType Event type, obtained from X-GitHub-Event header.
+     * @param eventSignature Event signature from X-Hub-Signature header.
      * @param event Event body in JSON format
      * @return HTTP response.
      * @throws Exception If something went wrong.
@@ -54,21 +61,27 @@ public class GithubHookEndpoint {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public final Response githubHook(@HeaderParam("X-GitHub-Event") final String eventType, final String event) throws Exception {
-        new OpPersistAllPuzzles(
-            new PsrcFromGithubEvent(
-                eventType,
-                event,
-                new Cp_GITHUB_AUTH_TOKEN()
-            ),
-            new ItGithubIssues(
-                new GhapiProduction(
+    public final Response githubHook(@HeaderParam("X-GitHub-Event") final String eventType, @HeaderParam("X-Hub-Signature") final String eventSignature, final String event) throws Exception {
+        new OpValidatingEventSignature(
+            new Cp_GITHUB_HOOK_SECRET(),
+            event,
+            Objects.isNull(eventSignature) ? "" : eventSignature,
+            new OpPersistAllPuzzles(
+                new PsrcFromGithubEvent(
+                    eventType,
+                    event,
                     new Cp_GITHUB_AUTH_TOKEN()
                 ),
-                new GprjFromGithubEvent(
-                    event
+                new ItGithubIssues(
+                    new GhapiProduction(
+                        new Cp_GITHUB_AUTH_TOKEN()
+                    ),
+                    new GprjFromGithubEvent(
+                        event
+                    )
                 )
-            )
+            ),
+            AuthenticationException::new
         ).execute();
         return Response.ok("{}").build();
     }

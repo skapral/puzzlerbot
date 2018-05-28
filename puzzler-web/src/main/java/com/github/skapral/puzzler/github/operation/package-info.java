@@ -23,27 +23,4 @@
  *
  */
 
-package com.github.skapral.puzzler.web.jersey;
-
-import oo.atom.anno.NotAtom;
-import org.glassfish.jersey.server.ResourceConfig;
-
-/**
- * Jersey's resource config for the Puzzler's API.
- *
- * @author Kapralov Sergey
- */
-@NotAtom
-public class PuzzlerAPI extends ResourceConfig {
-    /**
-     * Ctor.
-     */
-    public PuzzlerAPI() {
-        super(
-            StatusEndpoint.class,
-            GithubHookEndpoint.class,
-            DefaultExceptionMapper.class,
-            AuthenticationExceptionMapper.class
-        );
-    }
-}
+package com.github.skapral.puzzler.github.operation;
