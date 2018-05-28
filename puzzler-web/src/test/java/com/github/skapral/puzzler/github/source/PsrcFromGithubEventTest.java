@@ -28,6 +28,7 @@ package com.github.skapral.puzzler.github.source;
 import com.github.skapral.puzzler.config.CpStatic;
 import com.github.skapral.puzzler.core.puzzle.PzlStatic;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesCertainPuzzles;
+import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesNoPuzzles;
 import com.github.skapral.puzzler.github.mock.AssertAssumingMockServer;
 import com.github.skapral.puzzler.github.mock.GmsImplementation;
 import oo.atom.tests.TestCase;
@@ -117,6 +118,16 @@ class PsrcFromGithubEventTest extends TestsSuite {
                                 "Everything goes apart"
                             )
                         )
+                    )
+                )
+            ),
+            new TestCase(
+                "source produces zero puzzles from event of unknown type",
+                new AssertPuzzleSourceProducesNoPuzzles(
+                    new PsrcFromGithubEvent(
+                        "unknown_event",
+                        "{}",
+                        new CpStatic("fakeToken")
                     )
                 )
             )
