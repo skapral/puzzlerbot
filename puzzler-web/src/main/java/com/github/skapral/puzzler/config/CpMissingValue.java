@@ -23,27 +23,18 @@
  *
  */
 
-package com.github.skapral.puzzler.web.jersey;
+package com.github.skapral.puzzler.config;
 
-import oo.atom.anno.NotAtom;
-import org.glassfish.jersey.server.ResourceConfig;
+import io.vavr.control.Option;
 
 /**
- * Jersey's resource config for the Puzzler's API.
+ * Config property that intentionally is not specified (missing value).
  *
  * @author Kapralov Sergey
  */
-@NotAtom
-public class PuzzlerAPI extends ResourceConfig {
-    /**
-     * Ctor.
-     */
-    public PuzzlerAPI() {
-        super(
-            StatusEndpoint.class,
-            GithubHookEndpoint.class,
-            DefaultExceptionMapper.class,
-            AuthenticationExceptionMapper.class
-        );
+public class CpMissingValue implements ConfigProperty {
+    @Override
+    public final Option<String> optionalValue() {
+        return Option.none();
     }
 }

@@ -26,24 +26,40 @@
 package com.github.skapral.puzzler.web.jersey;
 
 import oo.atom.anno.NotAtom;
-import org.glassfish.jersey.server.ResourceConfig;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.ExceptionMapper;
+import javax.ws.rs.ext.Provider;
+
+import static com.github.skapral.puzzler.web.jersey.AuthenticationExceptionMapper.AuthenticationException;
 
 /**
- * Jersey's resource config for the Puzzler's API.
+ * Exception mapper for {@link AuthenticationException}.
  *
  * @author Kapralov Sergey
  */
 @NotAtom
-public class PuzzlerAPI extends ResourceConfig {
+@Provider
+public class AuthenticationExceptionMapper implements ExceptionMapper<AuthenticationException> {
     /**
-     * Ctor.
+     * Exception for issues related to unauthorized access to application.
+     *
+     * @author Kapralov Sergey
      */
-    public PuzzlerAPI() {
-        super(
-            StatusEndpoint.class,
-            GithubHookEndpoint.class,
-            DefaultExceptionMapper.class,
-            AuthenticationExceptionMapper.class
-        );
+    @NotAtom
+    public static final class AuthenticationException extends RuntimeException {
+        /**
+         * Ctor.
+         * @param message Exception message.
+         */
+        public AuthenticationException(String message) {
+            super(message);
+        }
+    }
+
+    @Override
+    public final Response toResponse(AuthenticationException exception) {
+        exception.printStackTrace();
+        return Response.status(Response.Status.UNAUTHORIZED).build();
     }
 }

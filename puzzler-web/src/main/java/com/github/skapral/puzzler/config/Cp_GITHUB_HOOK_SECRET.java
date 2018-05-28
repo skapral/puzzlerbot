@@ -23,27 +23,18 @@
  *
  */
 
-package com.github.skapral.puzzler.web.jersey;
-
-import oo.atom.anno.NotAtom;
-import org.glassfish.jersey.server.ResourceConfig;
+package com.github.skapral.puzzler.config;
 
 /**
- * Jersey's resource config for the Puzzler's API.
+ * GITHUB_HOOK_SECRET environment variable's value
  *
  * @author Kapralov Sergey
  */
-@NotAtom
-public class PuzzlerAPI extends ResourceConfig {
+public class Cp_GITHUB_HOOK_SECRET extends CpEnvironment {
     /**
      * Ctor.
      */
-    public PuzzlerAPI() {
-        super(
-            StatusEndpoint.class,
-            GithubHookEndpoint.class,
-            DefaultExceptionMapper.class,
-            AuthenticationExceptionMapper.class
-        );
+    public Cp_GITHUB_HOOK_SECRET() {
+        super("GITHUB_HOOK_SECRET");
     }
 }
