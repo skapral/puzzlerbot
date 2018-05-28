@@ -2,6 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/skapral/puzzlerbot/master.svg)](https://travis-ci.org/skapral/puzzlerbot)
 [![Codecov](https://codecov.io/gh/skapral/puzzlerbot/branch/master/graph/badge.svg)](https://codecov.io/gh/skapral/puzzlerbot)
+
 @todo #31 to add some badge which will show the `@puzzlerbot`'s status.
 
 ## Notice:
@@ -48,7 +49,10 @@ them both in one project without conflicts.
 
 ## Quick setup:
 
-@todo #31 Define how to quickly set up the puzzler bot on the GitHub project.
+Just add new GitHub webhook to your project:
+- Payload URL: `https://puzzler-bot.apps.skapral.com/github`
+- Content-type: `application/json`
+- Which events would you like to trigger this webhook: `Issues` and `Pull requests` would be enough.
 
 ## How to create a puzzle
 
