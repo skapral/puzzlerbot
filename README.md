@@ -31,6 +31,10 @@ of the parsers.
 during various high-level discussions, architecture planning, 
 epic stories decomposition - somewhere where code is not existing yet.
 
+- The syntax, used by documentation generators (like javadoc, for example) differs
+from conventions, used in GitHub (Markdown). It makes the puzzle hard, almost impossible,
+to format properly both in documentation and in GitHub Markdown.
+
 Puzzler bot's approach is to scan for puzzles in github comments after 
 the issue or pull request is closed. Github comments tend to be more stable than 
 the code base, they may exist when even no code is written yet.
