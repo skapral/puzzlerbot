@@ -63,6 +63,7 @@ public class PsrcFromGithubEvent extends PsrcInferred {
      * The {@link PsrcFromGithubEvent} inference.
      *
      * @author Kapralov Sergey
+     * @todo #27 refactor this class by splitting it to smaller composable components
      */
     private static class Inference implements PuzzleSource.Inference {
         private final String eventType;
@@ -84,14 +85,14 @@ public class PsrcFromGithubEvent extends PsrcInferred {
 
         @Override
         public final PuzzleSource puzzleSource() {
-            Option<JSONObject> jsonObject = Option.of(new JSONObject(eventBody));
+            final Option<JSONObject> jsonObject;
             switch(eventType) {
                 case "issues": {
-                    jsonObject = jsonObject.map(jo -> jo.getJSONObject("issue"));
+                    jsonObject = Option.of(new JSONObject(eventBody)).map(jo -> jo.getJSONObject("issue"));
                     break;
                 }
                 case "pull_request": {
-                    jsonObject = jsonObject.map(jo -> jo.getJSONObject("pull_request"));
+                    jsonObject = Option.of(new JSONObject(eventBody)).map(jo -> jo.getJSONObject("pull_request"));
                     break;
                 }
                 default: {
