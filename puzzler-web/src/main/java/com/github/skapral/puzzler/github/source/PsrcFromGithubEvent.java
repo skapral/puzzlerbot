@@ -84,14 +84,21 @@ public class PsrcFromGithubEvent extends PsrcInferred {
 
         @Override
         public final PuzzleSource puzzleSource() {
-            JSONObject jsonObject = new JSONObject(eventBody);
-            if("issues".equals(eventType)) {
-                jsonObject = jsonObject.getJSONObject("issue");
+            Option<JSONObject> jsonObject = Option.of(new JSONObject(eventBody));
+            switch(eventType) {
+                case "issues": {
+                    jsonObject = jsonObject.map(jo -> jo.getJSONObject("issue"));
+                    break;
+                }
+                case "pull_request": {
+                    jsonObject = jsonObject.map(jo -> jo.getJSONObject("pull_request"));
+                    break;
+                }
+                default: {
+                    jsonObject = Option.none();
+                }
             }
-            if("pull_request".equals(eventType)) {
-                jsonObject = jsonObject.getJSONObject("pull_request");
-            }
-            return Option.of(jsonObject)
+            return jsonObject
                 .<PuzzleSource>map(obj -> {
                     final String commentsUrl = obj.getString("comments_url");
                     final HttpGet request = new HttpGet(commentsUrl);
