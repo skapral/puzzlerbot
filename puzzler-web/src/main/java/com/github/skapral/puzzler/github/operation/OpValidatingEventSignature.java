@@ -35,7 +35,7 @@ import java.util.function.Function;
 
 /**
  * Operation which is executed only if GitHub hook signatures
- * match on GitHub event. See <a href="https://developer.github.com/webhooks/securing/"/>
+ * match on GitHub event. See <a href="https://developer.github.com/webhooks/securing/"></a>
  * for details.
  *
  * @author Kapralov Sergey
