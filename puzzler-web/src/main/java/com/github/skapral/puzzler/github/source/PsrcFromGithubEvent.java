@@ -88,7 +88,9 @@ public class PsrcFromGithubEvent extends PsrcInferred {
             final Option<JSONObject> jsonObject;
             switch(eventType) {
                 case "issues": {
-                    jsonObject = Option.of(new JSONObject(eventBody)).map(jo -> jo.getJSONObject("issue"));
+                    jsonObject = Option.of(new JSONObject(eventBody))
+                        .filter(jo -> "closed".equals(jo.getString("action")))
+                        .map(jo -> jo.getJSONObject("issue"));
                     break;
                 }
                 case "pull_request": {
