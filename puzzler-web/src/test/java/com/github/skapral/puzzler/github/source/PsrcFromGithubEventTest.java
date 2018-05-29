@@ -130,6 +130,16 @@ class PsrcFromGithubEventTest extends TestsSuite {
                         new CpStatic("fakeToken")
                     )
                 )
+            ),
+            new TestCase(
+                "source produces zero puzzles from issue event with non-closed action",
+                new AssertPuzzleSourceProducesNoPuzzles(
+                    new PsrcFromGithubEvent(
+                        "issues",
+                        "{\"action\":\"reopened\", \"issue\":{}}",
+                        new CpStatic("fakeToken")
+                    )
+                )
             )
         );
     }
