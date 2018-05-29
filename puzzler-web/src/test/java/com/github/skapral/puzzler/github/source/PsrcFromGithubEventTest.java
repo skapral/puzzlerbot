@@ -140,6 +140,16 @@ class PsrcFromGithubEventTest extends TestsSuite {
                         new CpStatic("fakeToken")
                     )
                 )
+            ),
+            new TestCase(
+                "source produces zero puzzles is pull request is closed without merging",
+                new AssertPuzzleSourceProducesNoPuzzles(
+                    new PsrcFromGithubEvent(
+                        "pull_request",
+                        "{\"action\":\"closed\", \"pull_request\":{\"merged\":false}}",
+                        new CpStatic("fakeToken")
+                    )
+                )
             )
         );
     }
