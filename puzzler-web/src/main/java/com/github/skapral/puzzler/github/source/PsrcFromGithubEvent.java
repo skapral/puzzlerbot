@@ -35,6 +35,7 @@ import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.json.JSONObject;
+import static java.lang.Boolean.TRUE;
 
 /**
  * Puzzles source, which parses puzzles from arbitrary Github event.
@@ -94,7 +95,10 @@ public class PsrcFromGithubEvent extends PsrcInferred {
                     break;
                 }
                 case "pull_request": {
-                    jsonObject = Option.of(new JSONObject(eventBody)).map(jo -> jo.getJSONObject("pull_request"));
+                    jsonObject = Option.of(new JSONObject(eventBody))
+                        .filter(jo -> "closed".equals(jo.getString("action")))
+                        .map(jo -> jo.getJSONObject("pull_request"))
+                        .filter(jo -> TRUE.equals(jo.getBoolean("merged")));
                     break;
                 }
                 default: {
