@@ -22,8 +22,8 @@ in fast and smooth way. Initial concept supposes that the puzzles
 are defined as specially-formatted TODO items in the project's source code, but
 practically this approach has some drawbacks:
 
-- Code base is volatile. Puzzles in the code are rarely stay in one line. 
-Some code is added, some code is removed, some codebase is changing intentionally
+- Code base is volatile. Puzzles in the code rarely stay in one line. 
+Some code is added, some code is removed, some codebase is changed intentionally
 or during merge conflicts resolving - it all means that puzzle in code has no stable 
 identity. It opens plenty of ways to mess the issue tracker or get abnormal behavior
 of the parsers.
@@ -87,7 +87,7 @@ This comment will be parsed by `@puzzlerbot` as a puzzle with title
 
 ### In details
 
-When parsing comments and seaking for puzzles, `@puzzlerbot` splits each comment to
+When parsing comments and seeking for puzzles, `@puzzlerbot` splits each comment to
 paragraphs and classifies each paragraph to one of the types below:
 
 - *Controlling* - the paragraph which mentions `@puzzlerbot` user. Controlling paragraphs
