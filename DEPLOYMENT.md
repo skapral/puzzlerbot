@@ -25,13 +25,11 @@ $ GITHUB_AUTH_TOKEN=<Github auth token> java -jar puzzler-app-*.jar
 
 ### Environment variables
 
-| Name                 | Mandatory?  | Description                                         |
-|----------------------|-------------|-----------------------------------------------------|
-| GITHUB_AUTH_TOKEN    | True        | Valid Github API authentication token, which has at |
-|                      |             | least `repo` permissions.                           |
-| PORT                 | False       | Port number for HTTP endpoints (5000 by default)    |
-| GITHUB_HOOK_SECRET   | False       | Github hook secret. If specified, each Github event |
-|                      |             | payload is validated using this secret.             |
+| Name                 | Mandatory?  | Description                                                                                |
+|----------------------|-------------|--------------------------------------------------------------------------------------------|
+| GITHUB_AUTH_TOKEN    | True        | Valid Github API authentication token, which has at least `repo` permissions.              |
+| PORT                 | False       | Port number for HTTP endpoints (5000 by default)                                           |
+| GITHUB_HOOK_SECRET   | False       | Github hook secret. If provided, each Github event payload is validated using this secret. |
 
 ### Deployment from IDE
 
