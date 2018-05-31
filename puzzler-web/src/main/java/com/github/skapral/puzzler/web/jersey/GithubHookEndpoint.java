@@ -30,6 +30,7 @@ import com.github.skapral.puzzler.config.Cp_GITHUB_HOOK_SECRET;
 import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
 import com.github.skapral.puzzler.github.itracker.ItGithubIssues;
 import com.github.skapral.puzzler.github.location.GhapiProduction;
+import com.github.skapral.puzzler.github.operation.OpIgnoringUnprivildgedEventSender;
 import com.github.skapral.puzzler.github.operation.OpValidatingEventSignature;
 import com.github.skapral.puzzler.github.project.GprjFromGithubEvent;
 import com.github.skapral.puzzler.github.source.PsrcFromGithubEvent;
@@ -66,18 +67,21 @@ public class GithubHookEndpoint {
             new Cp_GITHUB_HOOK_SECRET(),
             event,
             Objects.isNull(eventSignature) ? "" : eventSignature,
-            new OpPersistAllPuzzles(
-                new PsrcFromGithubEvent(
-                    eventType,
-                    event,
-                    new Cp_GITHUB_AUTH_TOKEN()
-                ),
-                new ItGithubIssues(
-                    new GhapiProduction(
+            new OpIgnoringUnprivildgedEventSender(
+                event,
+                new OpPersistAllPuzzles(
+                    new PsrcFromGithubEvent(
+                        eventType,
+                        event,
                         new Cp_GITHUB_AUTH_TOKEN()
                     ),
-                    new GprjFromGithubEvent(
-                        event
+                    new ItGithubIssues(
+                        new GhapiProduction(
+                            new Cp_GITHUB_AUTH_TOKEN()
+                        ),
+                        new GprjFromGithubEvent(
+                            event
+                        )
                     )
                 )
             ),
