@@ -54,6 +54,9 @@ Just add new GitHub webhook to your project:
 - Content-type: `application/json`
 - Which events would you like to trigger this webhook: `Issues` and `Pull requests` would be enough.
 
+Note that you can also deploy your own private and personal `@puzzlerbot` instance using 
+[this](DEPLOYMENT.md) guide. 
+
 ## How to create a puzzle
 
 Puzzles are placed in issue or pull request comments in GitHub. Once the issue of pull request is
