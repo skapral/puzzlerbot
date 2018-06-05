@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.github.mock;
 
-import oo.atom.tests.Assertion;
+import com.pragmaticobjects.oo.tests.Assertion;
 
 /**
  * Assertion on up-and-running Github mock server

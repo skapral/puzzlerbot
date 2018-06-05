@@ -28,7 +28,7 @@ package com.github.skapral.puzzler.core.source;
 import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import io.vavr.collection.List;
-import oo.atom.tests.Assertion;
+import com.pragmaticobjects.oo.tests.Assertion;
 import org.assertj.core.api.Assertions;
 
 import java.util.function.Function;

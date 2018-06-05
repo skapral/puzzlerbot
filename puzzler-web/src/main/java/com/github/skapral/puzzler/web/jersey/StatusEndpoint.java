@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.web.jersey;
 
-import oo.atom.anno.NotAtom;
+import com.pragmaticobjects.oo.atom.anno.NotAtom;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;

@@ -28,7 +28,7 @@ package com.github.skapral.puzzler.app;
 import com.github.skapral.puzzler.config.Cp_PORT;
 import com.github.skapral.puzzler.web.SrvGrizzlyWithJersey;
 import com.github.skapral.puzzler.web.jersey.PuzzlerAPI;
-import oo.atom.anno.NotAtom;
+import com.pragmaticobjects.oo.atom.anno.NotAtom;
 
 /**
  * Starting point.

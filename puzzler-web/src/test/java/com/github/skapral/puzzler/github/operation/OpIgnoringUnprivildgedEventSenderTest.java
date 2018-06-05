@@ -3,8 +3,8 @@ package com.github.skapral.puzzler.github.operation;
 import com.github.skapral.puzzler.core.operation.AssertOperationFails;
 import com.github.skapral.puzzler.core.operation.AssertOperationSuccessful;
 import com.github.skapral.puzzler.core.operation.OpFail;
-import oo.atom.tests.TestCase;
-import oo.atom.tests.TestsSuite;
+import com.pragmaticobjects.oo.tests.TestCase;
+import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.apache.commons.io.IOUtils;
 
 class OpIgnoringUnprivildgedEventSenderTest extends TestsSuite {

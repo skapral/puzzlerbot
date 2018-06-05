@@ -31,8 +31,8 @@ import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesCertainP
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesNoPuzzles;
 import com.github.skapral.puzzler.github.mock.AssertAssumingMockServer;
 import com.github.skapral.puzzler.github.mock.GmsImplementation;
-import oo.atom.tests.TestCase;
-import oo.atom.tests.TestsSuite;
+import com.pragmaticobjects.oo.tests.TestCase;
+import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.apache.commons.io.IOUtils;
 
 import java.nio.charset.Charset;

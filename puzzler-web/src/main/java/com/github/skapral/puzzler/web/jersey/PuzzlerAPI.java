@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.web.jersey;
 
-import oo.atom.anno.NotAtom;
+import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import org.glassfish.jersey.server.ResourceConfig;
 
 /**

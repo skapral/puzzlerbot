@@ -26,7 +26,7 @@
 package com.github.skapral.puzzler.core.text.threepars;
 
 import io.vavr.collection.List;
-import oo.atom.tests.Assertion;
+import com.pragmaticobjects.oo.tests.Assertion;
 import org.assertj.core.api.Assertions;
 
 import java.util.function.Function;
