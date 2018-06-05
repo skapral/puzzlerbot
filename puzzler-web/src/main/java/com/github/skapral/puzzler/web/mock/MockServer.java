@@ -23,4 +23,21 @@
  *
  */
 
-package com.github.skapral.puzzler.github.mock;
+package com.github.skapral.puzzler.web.mock;
+
+/**
+ * HTTP mock server simulating Github API
+ *
+ * @author Kapralov Sergey
+ */
+public interface MockServer {
+    /**
+     * Bootstraps the server instance.
+     */
+    void bootstrap();
+
+    /**
+     * Destroys the server instance.
+     */
+    void destroy();
+}

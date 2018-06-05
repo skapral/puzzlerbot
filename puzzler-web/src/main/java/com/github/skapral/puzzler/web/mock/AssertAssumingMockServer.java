@@ -23,21 +23,37 @@
  *
  */
 
-package com.github.skapral.puzzler.github.mock;
+package com.github.skapral.puzzler.web.mock;
+
+import com.pragmaticobjects.oo.tests.Assertion;
 
 /**
- * HTTP mock server simulating Github API
+ * Assertion on up-and-running Github mock server
  *
  * @author Kapralov Sergey
  */
-public interface GithubMockServer {
-    /**
-     * Bootstraps the server instance.
-     */
-    void bootstrap();
+public class AssertAssumingMockServer implements Assertion {
+    private final MockServer server;
+    private final Assertion assertion;
 
     /**
-     * Destroys the server instance.
+     * Ctor.
+     *
+     * @param server Mock server.
+     * @param assertion Assertion to check.
      */
-    void destroy();
+    public AssertAssumingMockServer(MockServer server, Assertion assertion) {
+        this.server = server;
+        this.assertion = assertion;
+    }
+
+    @Override
+    public final void check() throws Exception {
+        try {
+            server.bootstrap();
+            assertion.check();
+        } finally {
+            server.destroy();
+        }
+    }
 }

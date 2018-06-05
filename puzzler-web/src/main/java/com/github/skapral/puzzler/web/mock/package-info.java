@@ -23,37 +23,4 @@
  *
  */
 
-package com.github.skapral.puzzler.github.mock;
-
-import com.pragmaticobjects.oo.tests.Assertion;
-
-/**
- * Assertion on up-and-running Github mock server
- *
- * @author Kapralov Sergey
- */
-public class AssertAssumingMockServer implements Assertion {
-    private final GithubMockServer server;
-    private final Assertion assertion;
-
-    /**
-     * Ctor.
-     *
-     * @param server Mock server.
-     * @param assertion Assertion to check.
-     */
-    public AssertAssumingMockServer(GithubMockServer server, Assertion assertion) {
-        this.server = server;
-        this.assertion = assertion;
-    }
-
-    @Override
-    public final void check() throws Exception {
-        try {
-            server.bootstrap();
-            assertion.check();
-        } finally {
-            server.destroy();
-        }
-    }
-}
+package com.github.skapral.puzzler.web.mock;

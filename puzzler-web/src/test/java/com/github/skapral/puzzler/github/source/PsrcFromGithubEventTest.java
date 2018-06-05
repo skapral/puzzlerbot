@@ -29,8 +29,8 @@ import com.github.skapral.puzzler.config.CpStatic;
 import com.github.skapral.puzzler.core.puzzle.PzlStatic;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesCertainPuzzles;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesNoPuzzles;
-import com.github.skapral.puzzler.github.mock.AssertAssumingMockServer;
-import com.github.skapral.puzzler.github.mock.GmsImplementation;
+import com.github.skapral.puzzler.web.mock.AssertAssumingMockServer;
+import com.github.skapral.puzzler.web.mock.MockSrvImplementation;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.apache.commons.io.IOUtils;
@@ -58,7 +58,7 @@ class PsrcFromGithubEventTest extends TestsSuite {
             new TestCase(
                 "source produces correct puzzles from issue event",
                 new AssertAssumingMockServer(
-                    new GmsImplementation(
+                    new MockSrvImplementation(
                         8080,
                         req -> req.withPath("/repos/skapral/_testing/issues/9/comments"),
                         res -> res.withBody(COMMENTS)
@@ -91,7 +91,7 @@ class PsrcFromGithubEventTest extends TestsSuite {
             new TestCase(
                 "source produces correct puzzles from pull request event",
                 new AssertAssumingMockServer(
-                    new GmsImplementation(
+                    new MockSrvImplementation(
                         8080,
                         req -> req.withPath("/repos/skapral/_testing/issues/14/comments"),
                         res -> res.withBody(COMMENTS)
