@@ -1,6 +1,8 @@
 # Puzzler bot
 
-[![Build Status](https://img.shields.io/travis/skapral/puzzlerbot/master.svg)](https://travis-ci.org/skapral/puzzlerbot)
+[![Build Status (Travis)](https://img.shields.io/travis/skapral/puzzlerbot/master.svg)](https://travis-ci.org/skapral/puzzlerbot)
+[![Build status (AppVeyor)](https://ci.appveyor.com/api/projects/status/1mwgh02plynasibk/branch/master?svg=true)](https://ci.appveyor.com/project/skapral/puzzlerbot/branch/master)
+
 [![Codecov](https://codecov.io/gh/skapral/puzzlerbot/branch/master/graph/badge.svg)](https://codecov.io/gh/skapral/puzzlerbot)
 
 @todo #31 to add some badge which will show the `@puzzlerbot`'s status.
