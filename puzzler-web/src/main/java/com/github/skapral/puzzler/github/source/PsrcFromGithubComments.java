@@ -25,15 +25,13 @@
 
 package com.github.skapral.puzzler.github.source;
 
-import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.core.PuzzleSource;
-import com.github.skapral.puzzler.core.puzzle.PzlUsingThreeParsText;
-import com.github.skapral.puzzler.core.text.threepars.TxtStandard;
+import com.github.skapral.puzzler.core.source.PsrcFromComments;
+import com.github.skapral.puzzler.core.source.PsrcInferred;
 import com.github.skapral.puzzler.github.text.threepars.TwPuzzlerbotUser;
 import io.vavr.collection.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import static com.github.skapral.puzzler.core.text.threepars.Paragraph.Type.*;
 
 import java.util.stream.StreamSupport;
 
@@ -42,30 +40,47 @@ import java.util.stream.StreamSupport;
  *
  * @author Kapralov Sergey
  */
-public class PsrcFromGithubComments implements PuzzleSource {
-    private final String comments;
-
+public class PsrcFromGithubComments extends PsrcInferred {
     /**
      * Ctor.
      *
      * @param comments Github comments in JSON format.
      */
     public PsrcFromGithubComments(String comments) {
-        this.comments = comments;
+        super(
+            new Inference(
+                comments
+            )
+        );
     }
 
-    @Override
-    public final List<Puzzle> puzzles() {
-        final JSONArray jsonComments = new JSONArray(comments);
-        return StreamSupport.stream(jsonComments.spliterator(), false)
-            .map(o -> (JSONObject) o)
-            .map(o -> o.getString("body"))
-            .map(body -> new TxtStandard(
+    /**
+     * {@link PsrcFromGithubComments} inference
+     *
+     * @author Kapralov Sergey
+     */
+    private static class Inference implements PuzzleSource.Inference {
+        private final String comments;
+
+        /**
+         * Ctor.
+         *
+         * @param comments Github comments in JSON format.
+         */
+        public Inference(String comments) {
+            this.comments = comments;
+        }
+
+        @Override
+        public final PuzzleSource puzzleSource() {
+            final JSONArray jsonComments = new JSONArray(comments);
+            return new PsrcFromComments(
                 new TwPuzzlerbotUser(),
-                body
-            ))
-            .filter(txt -> txt.paragraphs().exists(p -> p.type() == CONTROLLING))
-            .map(txt -> new PzlUsingThreeParsText(txt))
-            .collect(List.collector());
+                StreamSupport.stream(jsonComments.spliterator(), false)
+                    .map(o -> (JSONObject) o)
+                    .map(o -> o.getString("body"))
+                    .collect(List.collector())
+            );
+        }
     }
 }
