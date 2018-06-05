@@ -32,7 +32,7 @@
  *         it is used to identify that the text is the puzzle and provide the metadata.
  *     </li>
  *     <li>
- *         First non-controlling paragraph in the text is the puzzle's title.
+ *         First non-controlling non-empty paragraph in the text is the puzzle's title.
  *     </li>
  *     <li>
  *         The rest non-controlling paragraphs are combined into description.
