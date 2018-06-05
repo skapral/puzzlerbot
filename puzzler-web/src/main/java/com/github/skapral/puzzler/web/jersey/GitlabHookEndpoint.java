@@ -26,25 +26,32 @@
 package com.github.skapral.puzzler.web.jersey;
 
 import com.pragmaticobjects.oo.atom.anno.NotAtom;
-import org.glassfish.jersey.server.ResourceConfig;
+import javax.ws.rs.*;
+import javax.ws.rs.core.Response;
 
 /**
- * Jersey's resource config for the Puzzler's API.
+ * The HTTP endpoint for Gitlab hook
  *
  * @author Kapralov Sergey
  */
 @NotAtom
-public class PuzzlerAPI extends ResourceConfig {
+@Path("gitlab")
+public class GitlabHookEndpoint {
     /**
-     * Ctor.
+     * Gitlab hook endpoint
+     * @param eventType Event type, obtained from X-Gitlab-Event header.
+     * @param eventSignature Event signature from X-Gitlab-Token header.
+     * @param event Event body in JSON format
+     * @return HTTP response.
+     * @throws Exception If something went wrong.
      */
-    public PuzzlerAPI() {
-        super(
-            StatusEndpoint.class,
-            GithubHookEndpoint.class,
-            GitlabHookEndpoint.class,
-            DefaultExceptionMapper.class,
-            AuthenticationExceptionMapper.class
-        );
+    @POST
+    @Consumes("application/json")
+    @Produces("application/json")
+    public final Response githubHook(@HeaderParam("X-Gitlab-Event") final String eventType, @HeaderParam("X-Gitlab-Token") final String eventSignature, final String event) throws Exception {
+        System.out.println("X-Gitlab-Event = " + eventType);
+        System.out.println("X-Gitlab-Token = " + eventSignature);
+        System.out.println("Body = " + event);
+        return Response.ok("{}").build();
     }
 }
