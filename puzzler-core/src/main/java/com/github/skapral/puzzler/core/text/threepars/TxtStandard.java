@@ -25,27 +25,12 @@
 
 package com.github.skapral.puzzler.core.text.threepars;
 
-import io.vavr.collection.List;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.StringReader;
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 /**
- * Text standard implementation. Splits the string by three-paragraph approach,
- * omitting leading and trailing empty paragraphs.
+ * Standard three-paragraphs text implementation, which produces
  *
  * @author Kapralov Sergey
- * @todo #7 Split this object to two: one for splitting text to paragraphs,
- *  another for trimming empty paragraphs in the beginning and end.
  */
-public class TxtStandard implements Text {
-    private final TriggerWord triggerWord;
-    private final String text;
-
+public class TxtStandard extends TxtTrim {
     /**
      * Ctor.
      *
@@ -53,63 +38,11 @@ public class TxtStandard implements Text {
      * @param text Text to parse.
      */
     public TxtStandard(TriggerWord triggerWord, String text) {
-        this.triggerWord = triggerWord;
-        this.text = text;
-    }
-
-    @Override
-    public final List<Paragraph> paragraphs() {
-        try(BufferedReader reader = new BufferedReader(new StringReader(text))) {
-            boolean titleFound = false;
-            boolean firstNonEmptyParagraphFound = false;
-            int emptyParagraphsCounter = 0;
-            ArrayList<Paragraph> result = new ArrayList<>();
-            for(String line : reader.lines().collect(Collectors.toList())) {
-                if(line.trim().isEmpty()) {
-                    emptyParagraphsCounter++;
-                } else if(line.contains(triggerWord.value())) {
-                    result.add(
-                        new ParStatic(Paragraph.Type.CONTROLLING, line)
-                    );
-                } else if(!titleFound) {
-                    titleFound = true;
-                    emptyParagraphsCounter = 0;
-                    result.add(
-                        new ParStatic(Paragraph.Type.TITLE, line)
-                    );
-                } else if(!firstNonEmptyParagraphFound) {
-                    firstNonEmptyParagraphFound = true;
-                    emptyParagraphsCounter = 0;
-                    result.add(
-                        new ParStatic(
-                            Paragraph.Type.DESCRIPTION,
-                            line
-                        )
-                    );
-                } else {
-                    IntStream.range(
-                        0,
-                        emptyParagraphsCounter
-                    ).forEach(
-                        i -> result.add(
-                            new ParStatic(
-                                Paragraph.Type.DESCRIPTION,
-                                ""
-                            )
-                        )
-                    );
-                    result.add(
-                        new ParStatic(
-                            Paragraph.Type.DESCRIPTION,
-                            line
-                        )
-                    );
-                    emptyParagraphsCounter = 0;
-                }
-            }
-            return List.ofAll(result);
-        } catch(IOException ex) {
-            throw new RuntimeException(ex);
-        }
+        super(
+            new TxtBase(
+                triggerWord,
+                text
+            )
+        );
     }
 }
