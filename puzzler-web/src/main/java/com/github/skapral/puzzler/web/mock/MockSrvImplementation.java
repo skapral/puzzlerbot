@@ -23,7 +23,7 @@
  *
  */
 
-package com.github.skapral.puzzler.github.mock;
+package com.github.skapral.puzzler.web.mock;
 
 import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import org.mockserver.client.server.MockServerClient;
@@ -41,7 +41,7 @@ import static org.mockserver.integration.ClientAndServer.startClientAndServer;
  *
  * @author Kapralov Sergey
  */
-public class GmsImplementation implements GithubMockServer {
+public class MockSrvImplementation implements MockServer {
     /**
      * Request building function.
      * @author Kapralov Sergey
@@ -66,7 +66,7 @@ public class GmsImplementation implements GithubMockServer {
      * @param reqFn Request builder.
      * @param respFn Response builder.
      */
-    private GmsImplementation(MockServerContext ctx, int port, RequestFunction reqFn, ResponseFunction respFn) {
+    private MockSrvImplementation(MockServerContext ctx, int port, RequestFunction reqFn, ResponseFunction respFn) {
         this.ctx = ctx;
         this.port = port;
         this.reqFn = reqFn;
@@ -80,7 +80,7 @@ public class GmsImplementation implements GithubMockServer {
      * @param reqFn Request builder.
      * @param respFn Response builder.
      */
-    public GmsImplementation(int port, RequestFunction reqFn, ResponseFunction respFn) {
+    public MockSrvImplementation(int port, RequestFunction reqFn, ResponseFunction respFn) {
         this(
             new MockServerContext(port),
             port,
