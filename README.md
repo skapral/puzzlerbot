@@ -7,9 +7,9 @@
 
 ## Notice:
 
-Puzzle Driver Development concept, `pdd` and `0pdd` tools belong to [Yegor Bugayenko](yegor256.com).
+Puzzle Driven Development concept, `pdd` and `0pdd` tools belong to [Yegor Bugayenko](yegor256.com).
 Links:
-- [Puzzle Driver Development concept](https://www.yegor256.com/2010/03/04/pdd.html)
+- [Puzzle Driven Development concept](https://www.yegor256.com/2010/03/04/pdd.html)
 - [0pdd](https://github.com/yegor256/0pdd/)
 - [pdd](https://github.com/yegor256/pdd/)
 
@@ -59,7 +59,7 @@ Note that you can also deploy your own private and personal `@puzzlerbot` instan
 
 ## How to create a puzzle
 
-Puzzles are placed in issue or pull request comments in GitHub. Once the issue of pull request is
+Puzzles are placed in issue or pull request comments in GitHub. Once the issue or pull request is
 closed, `@puzzlerbot` scans its comments for puzzles and creates one GitHub issue per puzzle. 
 One comment may have at most one puzzle. To make `@puzzlebot` properly recognize your puzzles,
 follow conventions described in this section.
