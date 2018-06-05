@@ -42,6 +42,11 @@
             <version>0.9.0</version>
         </dependency>
         <dependency>
+            <groupId>com.pragmaticobjects.oo.tests</groupId>
+            <artifactId>tests-junit5</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
             <version>3.8.0</version>

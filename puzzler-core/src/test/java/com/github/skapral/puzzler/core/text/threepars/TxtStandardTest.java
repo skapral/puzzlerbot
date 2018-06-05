@@ -25,8 +25,8 @@
 
 package com.github.skapral.puzzler.core.text.threepars;
 
-import oo.atom.tests.TestCase;
-import oo.atom.tests.TestsSuite;
+import com.pragmaticobjects.oo.tests.TestCase;
+import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 
 class TxtStandardTest extends TestsSuite {
     public TxtStandardTest() {

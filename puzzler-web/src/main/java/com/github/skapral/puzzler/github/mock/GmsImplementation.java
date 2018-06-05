@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.github.mock;
 
-import oo.atom.anno.NotAtom;
+import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import org.mockserver.client.server.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
 import org.mockserver.model.HttpRequest;

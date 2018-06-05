@@ -34,7 +34,7 @@ import com.github.skapral.puzzler.github.operation.OpIgnoringUnprivildgedEventSe
 import com.github.skapral.puzzler.github.operation.OpValidatingEventSignature;
 import com.github.skapral.puzzler.github.project.GprjFromGithubEvent;
 import com.github.skapral.puzzler.github.source.PsrcFromGithubEvent;
-import oo.atom.anno.NotAtom;
+import com.pragmaticobjects.oo.atom.anno.NotAtom;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;

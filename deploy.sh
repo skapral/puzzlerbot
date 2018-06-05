@@ -13,5 +13,4 @@ mv /tmp/README.md ./README.md
 mvn clean deploy -Pextras,ossrh
 git commit -am "[release] puzzlerbot-${TAG}"
 git tag -f ${TAG}
-git push origin ${TAG}
 

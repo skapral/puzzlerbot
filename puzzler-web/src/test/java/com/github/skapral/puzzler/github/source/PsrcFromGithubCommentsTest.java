@@ -27,8 +27,8 @@ package com.github.skapral.puzzler.github.source;
 
 import com.github.skapral.puzzler.core.puzzle.PzlStatic;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesCertainPuzzles;
-import oo.atom.tests.TestCase;
-import oo.atom.tests.TestsSuite;
+import com.pragmaticobjects.oo.tests.TestCase;
+import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.apache.commons.io.IOUtils;
 
 import java.nio.charset.Charset;

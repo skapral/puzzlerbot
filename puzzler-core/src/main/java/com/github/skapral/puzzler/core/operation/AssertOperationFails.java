@@ -26,7 +26,7 @@
 package com.github.skapral.puzzler.core.operation;
 
 import com.github.skapral.puzzler.core.Operation;
-import oo.atom.tests.Assertion;
+import com.pragmaticobjects.oo.tests.Assertion;
 import org.assertj.core.api.Assertions;
 
 /**

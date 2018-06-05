@@ -3,5 +3,8 @@ dist: trusty
 jdk:
 - openjdk8
 - oraclejdk9
+script:
+- java -version
+- mvn clean install -Pextras --errors
 after_success:
 - bash <(curl -s https://codecov.io/bash)

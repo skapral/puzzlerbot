@@ -25,10 +25,10 @@
 
 package com.github.skapral.puzzler.core.text.threepars;
 
-import oo.atom.tests.AssertAssertionFails;
-import oo.atom.tests.AssertAssertionPasses;
-import oo.atom.tests.TestCase;
-import oo.atom.tests.TestsSuite;
+import com.pragmaticobjects.oo.tests.AssertAssertionFails;
+import com.pragmaticobjects.oo.tests.AssertAssertionPasses;
+import com.pragmaticobjects.oo.tests.TestCase;
+import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 
 class AssertTextInstanceProducesCertainParagraphsTest extends TestsSuite {
     public AssertTextInstanceProducesCertainParagraphsTest() {
