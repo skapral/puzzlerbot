@@ -5,6 +5,6 @@ jdk:
 - oraclejdk9
 script:
 - java -version
-- mvn clean install -Pextras --errors
+- mvn clean install -Pextras,coverage,checkstyle --errors
 after_success:
 - bash <(curl -s https://codecov.io/bash)
