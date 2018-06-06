@@ -38,8 +38,8 @@ public class GlapiStatic implements GitlabAPI {
     /**
      * Ctor.
      *
-     * @param url Github API URL.
-     * @param authToken Github authorization token.
+     * @param url Gitlab API URL.
+     * @param authToken Gitlab authorization token.
      */
     public GlapiStatic(String url, String authToken) {
         this.url = url;

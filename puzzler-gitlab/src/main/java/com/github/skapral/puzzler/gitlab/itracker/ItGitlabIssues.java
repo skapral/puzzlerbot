@@ -41,9 +41,7 @@ import java.net.URLEncoder;
  * Gitlab issue tracker ('issues' tab)
  *
  * @author Kapralov Sergey
- * @todo #20 Improve test coverage for {@link ItGitlabIssues}.
  */
-@NotAtom
 public class ItGitlabIssues implements IssueTracker {
     private final GitlabAPI api;
     private final GitlabProject project;
@@ -51,8 +49,8 @@ public class ItGitlabIssues implements IssueTracker {
     /**
      * Ctor.
      *
-     * @param api Github API.
-     * @param project Github project.
+     * @param api Gitlab API.
+     * @param project Gitlab project.
      */
     public ItGitlabIssues(GitlabAPI api, GitlabProject project) {
         this.api = api;
