@@ -19,7 +19,7 @@ All you need to bootstrap a `@puzzlerbot` private instance is:
 
 $ mvn dependency:get -DgroupId=com.github.skapral.puzzler -DartifactId=puzzler-app -Dversion=<version number>
 
-$ GITHUB_AUTH_TOKEN=<Github auth token> java -jar puzzler-app-*.jar
+$ GITHUB_AUTH_TOKEN=<token> GITLAB_AUTH_TOKEN=<token> java -jar puzzler-app-*.jar
 
 ``` 
 
@@ -27,9 +27,14 @@ $ GITHUB_AUTH_TOKEN=<Github auth token> java -jar puzzler-app-*.jar
 
 | Name                 | Mandatory?  | Description                                                                                |
 |----------------------|-------------|--------------------------------------------------------------------------------------------|
-| GITHUB_AUTH_TOKEN    | True        | Valid Github API authentication token, which has at least `repo` permissions.              |
+| GITHUB_AUTH_TOKEN    | True *      | Valid Github API authentication token, which has at least `repo` permissions.              |
+| GITLAB_AUTH_TOKEN    | True **     | Valid Gitlab personal access token, which has at least `api` permissions.                  |
 | PORT                 | False       | Port number for HTTP endpoints (5000 by default)                                           |
 | GITHUB_HOOK_SECRET   | False       | Github hook secret. If provided, each Github event payload is validated using this secret. |
+
+`*` - Mandatory for using the `@puzzlebot`'s `/github` webhook
+`**` - Mandatory for using the `@puzzlebot`'s `/gitlab` webhook
+
 
 ### Deployment from IDE
 
