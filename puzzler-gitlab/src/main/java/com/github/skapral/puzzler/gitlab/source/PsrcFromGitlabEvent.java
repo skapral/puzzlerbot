@@ -74,9 +74,9 @@ public class PsrcFromGitlabEvent extends PsrcInferred {
         /**
          * Ctor.
          *
-         * @param api Github API
-         * @param eventType Github event's type (usually passed via X-GitHub-Event header).
-         * @param eventBody Github event's body in JSON format.
+         * @param api Gitlab API
+         * @param eventType Gitlab event's type (usually passed via X-Gitlab-Event header).
+         * @param eventBody Gitlab event's body in JSON format.
          */
         public Inference(GitlabAPI api, String eventType, String eventBody) {
             this.api = api;
