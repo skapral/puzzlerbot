@@ -25,3 +25,4 @@
  */
 
 package com.github.skapral.puzzler.gitlab.location;
+

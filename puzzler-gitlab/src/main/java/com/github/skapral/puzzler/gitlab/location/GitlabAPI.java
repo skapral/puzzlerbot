@@ -27,17 +27,17 @@
 package com.github.skapral.puzzler.gitlab.location;
 
 /**
- * Github API access information.
+ * Gitlab API access information.
  *
  * @author Kapralov Sergey
  */
 public interface GitlabAPI {
     /**
-     * @return GitHub URL.
+     * @return Gitlab URL.
      */
     String url();
     /**
-     * @return GitHub authentication token.
+     * @return Gitlab authentication token.
      */
     String authenticationToken();
 }
