@@ -83,7 +83,7 @@ class PsrcFromGitlabEventTest extends TestsSuite {
                         )
                     )
                 )
-            )/*,
+            ),
             new TestCase(
                 "source produces zero puzzles from event of unknown type",
                 new AssertPuzzleSourceProducesNoPuzzles(
@@ -109,7 +109,7 @@ class PsrcFromGitlabEventTest extends TestsSuite {
                         "{\"object_attributes\":{\"action\":\"reopened\"}}"
                     )
                 )
-            )*/
+            )
         );
     }
 }
