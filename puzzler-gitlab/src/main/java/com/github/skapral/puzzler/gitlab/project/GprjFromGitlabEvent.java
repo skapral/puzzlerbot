@@ -29,7 +29,7 @@ package com.github.skapral.puzzler.gitlab.project;
 import org.json.JSONObject;
 
 /**
- * Gitlab project's coordinates, obtained from Github event JSON.
+ * Gitlab project's coordinates, obtained from Gitlab event JSON.
  *
  * @author Kapralov Sergey
  */
