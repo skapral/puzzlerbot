@@ -25,6 +25,12 @@
 
 package com.github.skapral.puzzler.web.jersey;
 
+import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
+import com.github.skapral.puzzler.gitlab.config.Cp_GITLAB_AUTH_TOKEN;
+import com.github.skapral.puzzler.gitlab.itracker.ItGitlabIssues;
+import com.github.skapral.puzzler.gitlab.location.GlapiProduction;
+import com.github.skapral.puzzler.gitlab.project.GprjFromGitlabEvent;
+import com.github.skapral.puzzler.gitlab.source.PsrcFromGitlabEvent;
 import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -52,6 +58,23 @@ public class GitlabHookEndpoint {
         System.out.println("X-Gitlab-Event = " + eventType);
         System.out.println("X-Gitlab-Token = " + eventSignature);
         System.out.println("Body = " + event);
+        new OpPersistAllPuzzles(
+            new PsrcFromGitlabEvent(
+                new GlapiProduction(
+                    new Cp_GITLAB_AUTH_TOKEN()
+                ),
+                eventType,
+                event
+            ),
+            new ItGitlabIssues(
+                new GlapiProduction(
+                    new Cp_GITLAB_AUTH_TOKEN()
+                ),
+                new GprjFromGitlabEvent(
+                    event
+                )
+            )
+        ).execute();
         return Response.ok("{}").build();
     }
 }
