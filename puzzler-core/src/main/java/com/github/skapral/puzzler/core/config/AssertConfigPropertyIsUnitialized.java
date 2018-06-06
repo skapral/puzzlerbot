@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Kapralov Sergey
+ * Copyright (c) %today.year Kapralov Sergey
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,46 +21,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
+ *
  */
 
 package com.github.skapral.puzzler.core.config;
 
-import io.vavr.collection.List;
+import com.pragmaticobjects.oo.tests.Assertion;
 import io.vavr.control.Option;
+import org.assertj.core.api.Assertions;
 
 /**
- * Configuration property, value of which is obtained from another
- * {@link ConfigProperty} instances, until one which defined is met.
+ * Assertion that passes only if config property under test is uninitialized
+ * (has no value)
  *
  * @author Kapralov Sergey
  */
-public class CpOneOf implements ConfigProperty {
-    private final List<ConfigProperty> configProperties;
+public class AssertConfigPropertyIsUnitialized implements Assertion {
+    private final ConfigProperty configProperty;
 
     /**
      * Ctor.
      *
-     * @param configProperties Properties to search from.
+     * @param configProperty Config property under test
      */
-    public CpOneOf(final List<ConfigProperty> configProperties) {
-        this.configProperties = configProperties;
-    }
-
-    /**
-     * Ctor.
-     *
-     * @param configProperties Properties to search from.
-     */
-    public CpOneOf(final ConfigProperty... configProperties) {
-        this(List.of(configProperties));
+    public AssertConfigPropertyIsUnitialized(ConfigProperty configProperty) {
+        this.configProperty = configProperty;
     }
 
     @Override
-    public final Option<String> optionalValue() {
-        return configProperties
-            .map(ConfigProperty::optionalValue)
-            .find(o -> o.isDefined())
-            .getOrElse(Option.none());
+    public final void check() throws Exception {
+        Option<String> optValue = configProperty.optionalValue();
+        Assertions.assertThat(optValue).isEmpty();
     }
 }
-
