@@ -33,6 +33,7 @@ $ GITHUB_AUTH_TOKEN=<token> GITLAB_AUTH_TOKEN=<token> java -jar puzzler-app-*.ja
 | GITHUB_HOOK_SECRET   | False       | Github hook secret. If provided, each Github event payload is validated using this secret. |
 
 `*` - Mandatory for using the `@puzzlebot`'s `/github` webhook
+
 `**` - Mandatory for using the `@puzzlebot`'s `/gitlab` webhook
 
 
