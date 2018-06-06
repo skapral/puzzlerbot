@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Kapralov Sergey
+ * Copyright (c) %today.year Kapralov Sergey
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,46 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- */
-
-package com.github.skapral.puzzler.core.config;
-
-import io.vavr.collection.List;
-import io.vavr.control.Option;
-
-/**
- * Configuration property, value of which is obtained from another
- * {@link ConfigProperty} instances, until one which defined is met.
  *
- * @author Kapralov Sergey
  */
-public class CpOneOf implements ConfigProperty {
-    private final List<ConfigProperty> configProperties;
 
-    /**
-     * Ctor.
-     *
-     * @param configProperties Properties to search from.
-     */
-    public CpOneOf(final List<ConfigProperty> configProperties) {
-        this.configProperties = configProperties;
-    }
+package com.github.skapral.puzzler.mock;
 
-    /**
-     * Ctor.
-     *
-     * @param configProperties Properties to search from.
-     */
-    public CpOneOf(final ConfigProperty... configProperties) {
-        this(List.of(configProperties));
-    }
+import com.pragmaticobjects.oo.tests.TestCase;
+import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
+import org.apache.http.client.methods.HttpGet;
 
-    @Override
-    public final Option<String> optionalValue() {
-        return configProperties
-            .map(ConfigProperty::optionalValue)
-            .find(o -> o.isDefined())
-            .getOrElse(Option.none());
+class MockSrvImplementationTest extends TestsSuite {
+    public MockSrvImplementationTest() {
+        super(
+            new TestCase(
+                "mock server is successfully bootstrapped and responding",
+                new AssertAssumingMockServer(
+                    new MockSrvImplementation(
+                        20000,
+                        req -> req.withPath("/testEndpoint").withMethod("GET"),
+                        resp -> resp.withStatusCode(200).withBody("testResponse")
+                    ),
+                    new AssertHttpEndpointProducesExpectedResponse(
+                        () -> new HttpGet("http://localhost:20000/testEndpoint"),
+                        200,
+                        "testResponse"
+                    )
+                )
+            )
+        );
     }
 }
-
