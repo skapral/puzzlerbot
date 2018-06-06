@@ -30,7 +30,6 @@ import com.github.skapral.puzzler.core.IssueTracker;
 import com.github.skapral.puzzler.core.Puzzle;
 import com.github.skapral.puzzler.gitlab.location.GitlabAPI;
 import com.github.skapral.puzzler.gitlab.project.GitlabProject;
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.HttpClients;
