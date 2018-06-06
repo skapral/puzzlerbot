@@ -38,11 +38,9 @@ epic stories decomposition - somewhere where code is not existing yet.
 from conventions, used in GitHub (Markdown). It makes the puzzle hard, almost impossible,
 to format properly both in documentation and in GitHub Markdown.
 
-`@puzzlerbot`'s approach is to scan for puzzles in GitHub comments after 
-the issue or pull request is closed. Github comments tend to be more stable than 
-the code base, they may exist when even no code is written yet.
-
-@todo #8 Describe how to properly place puzzles so that puzzler bot discovers them. 
+`@puzzlerbot`'s approach is to scan for puzzles in issues or pull requests comments after 
+the issue or pull request is closed. Comments tend to be more stable than 
+the code base, they may exist when even no code is written yet, and they are rarely changed.
 
 ## Principles:
 
@@ -51,18 +49,30 @@ them both in one project without conflicts.
 
 ## Quick setup:
 
-Just add new GitHub webhook to your project:
+Puzzlerbot supports GitHub and GitLab integration.
+
+### GitHub
+
+Just add new GitHub webhook to your project's settings tab:
 - Payload URL: `https://puzzler-bot.apps.skapral.com/github`
 - Content-type: `application/json`
 - Which events would you like to trigger this webhook: `Issues` and `Pull requests` would be enough.
+
+### GitLab
+
+In your project's "settings" -> "integration" view, add new webhook:
+- Payload URL: `https://puzzler-bot.apps.skapral.com/gitlab`
+- Trigger: `Issues events` and `Merge requests events` would be enough.
+
+### Misc
 
 Note that you can also deploy your own private and personal `@puzzlerbot` instance using 
 [this](DEPLOYMENT.md) guide. 
 
 ## How to create a puzzle
 
-Puzzles are placed in issue or pull request comments in GitHub. Once the issue or pull request is
-closed, `@puzzlerbot` scans its comments for puzzles and creates one GitHub issue per puzzle. 
+Puzzles are placed in issue or pull request comments. Once the issue or pull request is
+closed, `@puzzlerbot` scans its comments for puzzles and creates one issue per puzzle. 
 One comment may have at most one puzzle. To make `@puzzlebot` properly recognize your puzzles,
 follow conventions described in this section.
 
@@ -95,12 +105,12 @@ paragraphs and classifies each paragraph to one of the types below:
 - *Controlling* - the paragraph which mentions `@puzzlerbot` user. Controlling paragraphs
 are an indicator that the comment represents a puzzle.
 One comment may have any number of controlling paragraphs but only the first will be taken 
-into account. Controlling paragraphs are not included to the resulting GitHub issue.
+into account. Controlling paragraphs are not included to the resulting issue.
 
 - *Title* - the first non-controlling paragraph in a comment. One comment may have only one
-title paragraph. This paragraph is used for the GitHub issue's title.
+title paragraph. This paragraph is used for the issue's title.
 
-- *Description* - rest of the paragraphs. They are used as the GitHub issue's description.
+- *Description* - rest of the paragraphs. They are used as the issue's description.
 
 ## License
 
