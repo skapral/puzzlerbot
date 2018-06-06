@@ -53,14 +53,14 @@ Puzzlerbot supports GitHub and GitLab integration.
 
 ### GitHub
 
-Just add new GitHub webhook to your project's settings tab:
+Just add new GitHub webhook to your project's "Settings" -> "Webhooks" tab:
 - Payload URL: `https://puzzler-bot.apps.skapral.com/github`
 - Content-type: `application/json`
 - Which events would you like to trigger this webhook: `Issues` and `Pull requests` would be enough.
 
 ### GitLab
 
-In your project's "settings" -> "integration" view, add new webhook:
+In your GitLab project's "Settings" -> "Integration" view, add new webhook:
 - Payload URL: `https://puzzler-bot.apps.skapral.com/gitlab`
 - Trigger: `Issues events` and `Merge requests events` would be enough.
 
