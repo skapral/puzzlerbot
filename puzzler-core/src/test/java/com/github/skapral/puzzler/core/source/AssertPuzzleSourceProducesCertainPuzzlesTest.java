@@ -67,6 +67,31 @@ class AssertPuzzleSourceProducesCertainPuzzlesTest extends TestsSuite {
                         )
                     )
                 )
+            ),
+            new TestCase(
+                "an order of produced puzzles doesn't matter",
+                new AssertAssertionPasses(
+                    new AssertPuzzleSourceProducesCertainPuzzles(
+                        new PsrcStatic(
+                            new PzlStatic(
+                                "test puzzle 1",
+                                "desc"
+                            ),
+                            new PzlStatic(
+                                "test puzzle 2",
+                                "desc"
+                            )
+                        ),
+                        new PzlStatic(
+                            "test puzzle 2",
+                            "desc"
+                        ),
+                        new PzlStatic(
+                            "test puzzle 1",
+                            "desc"
+                        )
+                    )
+                )
             )
         );
     }

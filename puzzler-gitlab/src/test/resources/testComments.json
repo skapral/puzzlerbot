@@ -1,0 +1,107 @@
+[
+  {
+    "id": 79136207,
+    "type": null,
+    "body": "closed",
+    "attachment": null,
+    "author": {
+      "id": 2361626,
+      "name": "Sergey Kapralov",
+      "username": "skapral",
+      "state": "active",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2361626/avatar.png",
+      "web_url": "https://gitlab.com/skapral"
+    },
+    "created_at": "2018-06-06T18:35:14.443Z",
+    "updated_at": "2018-06-06T18:35:14.443Z",
+    "system": true,
+    "noteable_id": 11702481,
+    "noteable_type": "Issue",
+    "resolvable": false,
+    "noteable_iid": 7
+  },
+  {
+    "id": 79135497,
+    "type": null,
+    "body": "mentioned in merge request !1",
+    "attachment": null,
+    "author": {
+      "id": 2361626,
+      "name": "Sergey Kapralov",
+      "username": "skapral",
+      "state": "active",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2361626/avatar.png",
+      "web_url": "https://gitlab.com/skapral"
+    },
+    "created_at": "2018-06-06T18:34:51.092Z",
+    "updated_at": "2018-06-06T18:34:51.092Z",
+    "system": true,
+    "noteable_id": 11702481,
+    "noteable_type": "Issue",
+    "resolvable": false,
+    "noteable_iid": 7
+  },
+  {
+    "id": 79135380,
+    "type": null,
+    "body": "created branch [`7-proba-issue`](https://gitlab.com/skapral/_testing/compare/master...7-proba-issue)",
+    "attachment": null,
+    "author": {
+      "id": 2361626,
+      "name": "Sergey Kapralov",
+      "username": "skapral",
+      "state": "active",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2361626/avatar.png",
+      "web_url": "https://gitlab.com/skapral"
+    },
+    "created_at": "2018-06-06T18:34:49.626Z",
+    "updated_at": "2018-06-06T18:34:49.626Z",
+    "system": true,
+    "noteable_id": 11702481,
+    "noteable_type": "Issue",
+    "resolvable": false,
+    "noteable_iid": 7
+  },
+  {
+    "id": 79134683,
+    "type": null,
+    "body": "@puzzlerbot FYI\n\nIssue 2",
+    "attachment": null,
+    "author": {
+      "id": 2361626,
+      "name": "Sergey Kapralov",
+      "username": "skapral",
+      "state": "active",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2361626/avatar.png",
+      "web_url": "https://gitlab.com/skapral"
+    },
+    "created_at": "2018-06-06T18:34:15.672Z",
+    "updated_at": "2018-06-06T18:34:15.672Z",
+    "system": false,
+    "noteable_id": 11702481,
+    "noteable_type": "Issue",
+    "resolvable": false,
+    "noteable_iid": 7
+  },
+  {
+    "id": 79134608,
+    "type": null,
+    "body": "@puzzlerbot FYI\n\nIssue 1",
+    "attachment": null,
+    "author": {
+      "id": 2361626,
+      "name": "Sergey Kapralov",
+      "username": "skapral",
+      "state": "active",
+      "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2361626/avatar.png",
+      "web_url": "https://gitlab.com/skapral"
+    },
+    "created_at": "2018-06-06T18:34:04.691Z",
+    "updated_at": "2018-06-06T18:34:04.691Z",
+    "system": false,
+    "noteable_id": 11702481,
+    "noteable_type": "Issue",
+    "resolvable": false,
+    "noteable_iid": 7
+  }
+]
