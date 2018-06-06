@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.web;
 
-import com.github.skapral.puzzler.config.ConfigProperty;
+import com.github.skapral.puzzler.core.config.ConfigProperty;
 import org.glassfish.grizzly.http.server.HttpServer;
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.server.ResourceConfig;

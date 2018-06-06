@@ -23,25 +23,44 @@
  *
  */
 
-package com.github.skapral.puzzler.config;
+package com.github.skapral.puzzler.core.config;
 
-import com.github.skapral.puzzler.core.config.CpEnvironment;
-import com.github.skapral.puzzler.core.config.CpOneOf;
-import com.github.skapral.puzzler.core.config.CpStatic;
+import io.vavr.collection.List;
+import io.vavr.control.Option;
 
 /**
- * PORT environment variable's value.
+ * Configuration property, value of which is obtained from another
+ * {@link ConfigProperty} instances, until one which defined is met.
  *
  * @author Kapralov Sergey
  */
-public class Cp_PORT extends CpOneOf {
+public class CpOneOf implements ConfigProperty {
+    private final List<ConfigProperty> configProperties;
+
     /**
      * Ctor.
+     *
+     * @param configProperties Properties to search from.
      */
-    public Cp_PORT() {
-        super(
-            new CpEnvironment("PORT"),
-            new CpStatic("5000")
-        );
+    public CpOneOf(final List<ConfigProperty> configProperties) {
+        this.configProperties = configProperties;
+    }
+
+    /**
+     * Ctor.
+     *
+     * @param configProperties Properties to search from.
+     */
+    public CpOneOf(final ConfigProperty... configProperties) {
+        this(List.of(configProperties));
+    }
+
+    @Override
+    public final Option<String> optionalValue() {
+        return configProperties
+            .map(ConfigProperty::optionalValue)
+            .find(o -> o.isDefined())
+            .get();
     }
 }
+
