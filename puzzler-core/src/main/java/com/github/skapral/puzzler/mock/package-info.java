@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Kapralov Sergey
+ * Copyright (c) %today.year Kapralov Sergey
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,27 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
- */
-
-package com.github.skapral.puzzler.config;
-
-import com.github.skapral.puzzler.core.config.CpEnvironment;
-import com.github.skapral.puzzler.core.config.CpOneOf;
-import com.github.skapral.puzzler.core.config.CpStatic;
-
-/**
- * PORT environment variable's value.
  *
- * @author Kapralov Sergey
  */
-public class Cp_PORT extends CpOneOf {
-    /**
-     * Ctor.
-     */
-    public Cp_PORT() {
-        super(
-            new CpEnvironment("PORT"),
-            new CpStatic("5000")
-        );
-    }
-}
+
+package com.github.skapral.puzzler.mock;

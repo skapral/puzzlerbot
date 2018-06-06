@@ -23,25 +23,34 @@
  *
  */
 
-package com.github.skapral.puzzler.config;
+package com.github.skapral.puzzler.github.location;
 
-import com.github.skapral.puzzler.core.config.CpEnvironment;
-import com.github.skapral.puzzler.core.config.CpOneOf;
-import com.github.skapral.puzzler.core.config.CpStatic;
+import com.github.skapral.puzzler.core.config.ConfigProperty;
 
 /**
- * PORT environment variable's value.
+ * Github API.
  *
  * @author Kapralov Sergey
  */
-public class Cp_PORT extends CpOneOf {
+public class GhapiProduction implements GithubAPI {
+    private final ConfigProperty authToken;
+
     /**
      * Ctor.
+     *
+     * @param authToken Authentication token config
      */
-    public Cp_PORT() {
-        super(
-            new CpEnvironment("PORT"),
-            new CpStatic("5000")
-        );
+    public GhapiProduction(ConfigProperty authToken) {
+        this.authToken = authToken;
+    }
+
+    @Override
+    public final String url() {
+        return "https://api.github.com";
+    }
+
+    @Override
+    public final String authenticationToken() {
+        return authToken.optionalValue().get();
     }
 }

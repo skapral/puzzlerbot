@@ -25,8 +25,8 @@
 
 package com.github.skapral.puzzler.web.jersey;
 
-import com.github.skapral.puzzler.config.Cp_GITHUB_AUTH_TOKEN;
-import com.github.skapral.puzzler.config.Cp_GITHUB_HOOK_SECRET;
+import com.github.skapral.puzzler.github.config.Cp_GITHUB_AUTH_TOKEN;
+import com.github.skapral.puzzler.github.config.Cp_GITHUB_HOOK_SECRET;
 import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
 import com.github.skapral.puzzler.github.itracker.ItGithubIssues;
 import com.github.skapral.puzzler.github.location.GhapiProduction;

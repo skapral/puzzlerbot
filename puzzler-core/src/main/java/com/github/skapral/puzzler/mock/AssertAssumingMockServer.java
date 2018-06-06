@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Kapralov Sergey
+ * Copyright (c) %today.year Kapralov Sergey
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,27 +21,40 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
+ *
  */
 
-package com.github.skapral.puzzler.config;
+package com.github.skapral.puzzler.mock;
 
-import com.github.skapral.puzzler.core.config.CpEnvironment;
-import com.github.skapral.puzzler.core.config.CpOneOf;
-import com.github.skapral.puzzler.core.config.CpStatic;
+import com.pragmaticobjects.oo.tests.Assertion;
 
 /**
- * PORT environment variable's value.
+ * Assertion on up-and-running Github mock server
  *
  * @author Kapralov Sergey
  */
-public class Cp_PORT extends CpOneOf {
+public class AssertAssumingMockServer implements Assertion {
+    private final MockServer server;
+    private final Assertion assertion;
+
     /**
      * Ctor.
+     *
+     * @param server Mock server.
+     * @param assertion Assertion to check.
      */
-    public Cp_PORT() {
-        super(
-            new CpEnvironment("PORT"),
-            new CpStatic("5000")
-        );
+    public AssertAssumingMockServer(MockServer server, Assertion assertion) {
+        this.server = server;
+        this.assertion = assertion;
+    }
+
+    @Override
+    public final void check() throws Exception {
+        try {
+            server.bootstrap();
+            assertion.check();
+        } finally {
+            server.destroy();
+        }
     }
 }

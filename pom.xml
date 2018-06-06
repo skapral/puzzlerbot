@@ -36,6 +36,7 @@
         <module>puzzler-core</module>
         <module>puzzler-web</module>
         <module>puzzler-app</module>
+        <module>puzzler-github</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

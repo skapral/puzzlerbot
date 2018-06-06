@@ -23,25 +23,18 @@
  *
  */
 
-package com.github.skapral.puzzler.config;
+package com.github.skapral.puzzler.core.config;
 
-import com.github.skapral.puzzler.core.config.CpEnvironment;
-import com.github.skapral.puzzler.core.config.CpOneOf;
-import com.github.skapral.puzzler.core.config.CpStatic;
+import io.vavr.control.Option;
 
 /**
- * PORT environment variable's value.
+ * Configuration property
  *
  * @author Kapralov Sergey
  */
-public class Cp_PORT extends CpOneOf {
+public interface ConfigProperty {
     /**
-     * Ctor.
+     * @return optional value of the configuration property.
      */
-    public Cp_PORT() {
-        super(
-            new CpEnvironment("PORT"),
-            new CpStatic("5000")
-        );
-    }
+    Option<String> optionalValue();
 }
