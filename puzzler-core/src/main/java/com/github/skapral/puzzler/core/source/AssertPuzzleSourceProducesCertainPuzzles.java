@@ -68,6 +68,6 @@ public class AssertPuzzleSourceProducesCertainPuzzles implements Assertion {
     public final void check() throws Exception {
         final Function<Puzzle, String> normalizer = p -> String.format("Puzzle(%s, %s)", p.title(), p.description());
         Assertions.assertThat(source.puzzles().map(normalizer))
-            .containsExactlyElementsOf(expectedPuzzles.map(normalizer));
+            .containsExactlyInAnyOrder(expectedPuzzles.map(normalizer).toJavaArray(String.class));
     }
 }
