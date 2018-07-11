@@ -27,8 +27,10 @@ package com.github.skapral.puzzler.web.jersey;
 
 import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
 import com.github.skapral.puzzler.gitlab.config.Cp_GITLAB_AUTH_TOKEN;
+import com.github.skapral.puzzler.gitlab.config.Cp_GITLAB_HOOK_SECRET;
 import com.github.skapral.puzzler.gitlab.itracker.ItGitlabIssues;
 import com.github.skapral.puzzler.gitlab.location.GlapiProduction;
+import com.github.skapral.puzzler.gitlab.operation.OpValidatingGitlabEventToken;
 import com.github.skapral.puzzler.gitlab.project.GprjFromGitlabEvent;
 import com.github.skapral.puzzler.gitlab.source.PsrcFromGitlabEvent;
 import com.pragmaticobjects.oo.atom.anno.NotAtom;
@@ -46,7 +48,7 @@ public class GitlabHookEndpoint {
     /**
      * Gitlab hook endpoint
      * @param eventType Event type, obtained from X-Gitlab-Event header.
-     * @param eventSignature Event signature from X-Gitlab-Token header.
+     * @param eventToken Event token from X-Gitlab-Token header.
      * @param event Event body in JSON format
      * @return HTTP response.
      * @throws Exception If something went wrong.
@@ -54,26 +56,28 @@ public class GitlabHookEndpoint {
     @POST
     @Consumes("application/json")
     @Produces("application/json")
-    public final Response githubHook(@HeaderParam("X-Gitlab-Event") final String eventType, @HeaderParam("X-Gitlab-Token") final String eventSignature, final String event) throws Exception {
-        System.out.println("X-Gitlab-Event = " + eventType);
-        System.out.println("X-Gitlab-Token = " + eventSignature);
-        System.out.println("Body = " + event);
-        new OpPersistAllPuzzles(
-            new PsrcFromGitlabEvent(
-                new GlapiProduction(
-                    new Cp_GITLAB_AUTH_TOKEN()
-                ),
-                eventType,
-                event
-            ),
-            new ItGitlabIssues(
-                new GlapiProduction(
-                    new Cp_GITLAB_AUTH_TOKEN()
-                ),
-                new GprjFromGitlabEvent(
+    public final Response githubHook(@HeaderParam("X-Gitlab-Event") final String eventType, @HeaderParam("X-Gitlab-Token") final String eventToken, final String event) throws Exception {
+        new OpValidatingGitlabEventToken(
+            new Cp_GITLAB_HOOK_SECRET(),
+            eventToken,
+            new OpPersistAllPuzzles(
+                new PsrcFromGitlabEvent(
+                    new GlapiProduction(
+                        new Cp_GITLAB_AUTH_TOKEN()
+                    ),
+                    eventType,
                     event
+                ),
+                new ItGitlabIssues(
+                    new GlapiProduction(
+                        new Cp_GITLAB_AUTH_TOKEN()
+                    ),
+                    new GprjFromGitlabEvent(
+                        event
+                    )
                 )
-            )
+            ),
+            AuthenticationExceptionMapper.AuthenticationException::new
         ).execute();
         return Response.ok("{}").build();
     }

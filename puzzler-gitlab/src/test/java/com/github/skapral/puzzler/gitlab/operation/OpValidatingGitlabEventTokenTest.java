@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Kapralov Sergey
+ * Copyright (c) %today.year Kapralov Sergey
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,63 +21,39 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
+ *
  */
 
-package com.github.skapral.puzzler.github.operation;
+package com.github.skapral.puzzler.gitlab.operation;
 
-import com.github.skapral.puzzler.core.config.CpMissingValue;
+
 import com.github.skapral.puzzler.core.config.CpStatic;
 import com.github.skapral.puzzler.core.operation.AssertOperationFails;
 import com.github.skapral.puzzler.core.operation.AssertOperationSuccessful;
 import com.github.skapral.puzzler.core.operation.OpDoNothing;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
-import org.apache.commons.io.IOUtils;
 
-class OpValidatingEventSignatureTest extends TestsSuite {
-    private static final String SIGNED_BODY;
-
-    static {
-        try {
-            SIGNED_BODY = IOUtils.toString(OpValidatingEventSignature.class.getResource("signedBody"));
-        } catch(Exception ex) {
-            throw new RuntimeException(ex);
-        }
-    }
-
-    public OpValidatingEventSignatureTest() {
+class OpValidatingGitlabEventTokenTest extends TestsSuite {
+    public OpValidatingGitlabEventTokenTest() {
         super(
             new TestCase(
-                "operation passes if signatures match",
+                "Positive case",
                 new AssertOperationSuccessful(
-                    new OpValidatingEventSignature(
-                        new CpStatic("secret"),
-                        SIGNED_BODY,
-                        "sha1=e7e81bca3c1c67910123611b1d94bfe78760b9dd",
+                    new OpValidatingGitlabEventToken(
+                        new CpStatic("qwerty"),
+                        "qwerty",
                         new OpDoNothing(),
                         RuntimeException::new
                     )
                 )
             ),
             new TestCase(
-                "operation fails if signatures mismatch",
+                "Negative case",
                 new AssertOperationFails(
-                    new OpValidatingEventSignature(
-                        new CpStatic("secret"),
-                        SIGNED_BODY,
-                        "sha1=somefakesignature00000000000000000000000",
-                        new OpDoNothing(),
-                        RuntimeException::new
-                    )
-                )
-            ),
-            new TestCase(
-                "signatures are not validated if secret is not provided",
-                new AssertOperationSuccessful(
-                    new OpValidatingEventSignature(
-                        new CpMissingValue(),
-                        SIGNED_BODY,
-                        "sha1=somefakesignature00000000000000000000000",
+                    new OpValidatingGitlabEventToken(
+                        new CpStatic("qwerty"),
+                        "asdfgh",
                         new OpDoNothing(),
                         RuntimeException::new
                     )
@@ -85,5 +61,4 @@ class OpValidatingEventSignatureTest extends TestsSuite {
             )
         );
     }
-
 }

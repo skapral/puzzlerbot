@@ -31,7 +31,7 @@ import com.github.skapral.puzzler.core.operation.OpPersistAllPuzzles;
 import com.github.skapral.puzzler.github.itracker.ItGithubIssues;
 import com.github.skapral.puzzler.github.location.GhapiProduction;
 import com.github.skapral.puzzler.github.operation.OpIgnoringUnprivildgedEventSender;
-import com.github.skapral.puzzler.github.operation.OpValidatingEventSignature;
+import com.github.skapral.puzzler.github.operation.OpValidatingGithubEventSignature;
 import com.github.skapral.puzzler.github.project.GprjFromGithubEvent;
 import com.github.skapral.puzzler.github.source.PsrcFromGithubEvent;
 import com.pragmaticobjects.oo.atom.anno.NotAtom;
@@ -63,7 +63,7 @@ public class GithubHookEndpoint {
     @Consumes("application/json")
     @Produces("application/json")
     public final Response githubHook(@HeaderParam("X-GitHub-Event") final String eventType, @HeaderParam("X-Hub-Signature") final String eventSignature, final String event) throws Exception {
-        new OpValidatingEventSignature(
+        new OpValidatingGithubEventSignature(
             new Cp_GITHUB_HOOK_SECRET(),
             event,
             Objects.isNull(eventSignature) ? "" : eventSignature,
