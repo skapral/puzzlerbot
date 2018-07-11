@@ -40,7 +40,7 @@ import java.util.function.Function;
  *
  * @author Kapralov Sergey
  */
-public class OpValidatingEventSignature implements Operation {
+public class OpValidatingGithubEventSignature implements Operation {
     private final ConfigProperty secret;
     private final String eventBody;
     private final String eventSignature;
@@ -56,7 +56,7 @@ public class OpValidatingEventSignature implements Operation {
      * @param delegate Operation to delegate to, if signatures match.
      * @param exceptionFn Constructor of exception to throw if signatures mismatch.
      */
-    public OpValidatingEventSignature(ConfigProperty secret, String eventBody, String eventSignature, Operation delegate, Function<String, RuntimeException> exceptionFn) {
+    public OpValidatingGithubEventSignature(ConfigProperty secret, String eventBody, String eventSignature, Operation delegate, Function<String, RuntimeException> exceptionFn) {
         this.secret = secret;
         this.eventBody = eventBody;
         this.eventSignature = eventSignature;

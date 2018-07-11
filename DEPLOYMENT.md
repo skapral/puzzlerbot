@@ -30,7 +30,8 @@ $ GITHUB_AUTH_TOKEN=<token> GITLAB_AUTH_TOKEN=<token> java -jar puzzler-app-*.ja
 | GITHUB_AUTH_TOKEN    | True *      | Valid Github API authentication token, which has at least `repo` permissions.              |
 | GITLAB_AUTH_TOKEN    | True **     | Valid Gitlab personal access token, which has at least `api` permissions.                  |
 | PORT                 | False       | Port number for HTTP endpoints (5000 by default)                                           |
-| GITHUB_HOOK_SECRET   | False       | Github hook secret. If provided, each Github event payload is validated using this secret. |
+| GITHUB_HOOK_SECRET   | False       | Github hook expectedToken. If provided, each Github event payload is validated using this expectedToken. |
+| GITLAB_HOOK_SECRET   | False       | Gitlab hook expectedToken. If provided, each Gitlab event payload is validated using this expectedToken. |
 
 `*` - Mandatory for using the `@puzzlebot`'s `/github` webhook
 

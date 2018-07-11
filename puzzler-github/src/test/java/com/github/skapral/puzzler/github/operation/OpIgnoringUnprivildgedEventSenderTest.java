@@ -13,8 +13,8 @@ class OpIgnoringUnprivildgedEventSenderTest extends TestsSuite {
 
     static {
         try {
-            OWNER_IS_SENDER = IOUtils.toString(OpValidatingEventSignature.class.getResource("ownerIsSender"));
-            OWNER_IS_NOT_SENDER = IOUtils.toString(OpValidatingEventSignature.class.getResource("ownerIsNotSender"));
+            OWNER_IS_SENDER = IOUtils.toString(OpValidatingGithubEventSignature.class.getResource("ownerIsSender"));
+            OWNER_IS_NOT_SENDER = IOUtils.toString(OpValidatingGithubEventSignature.class.getResource("ownerIsNotSender"));
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }
