@@ -43,11 +43,13 @@ import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 class PsrcFromGitlabEventTest extends TestsSuite {
     private static final String COMMENTS;
     private static final String ISSUE_EVENT;
+    private static final String MR_EVENT;
 
     static {
         try {
             COMMENTS = IOUtils.resourceToString("/testComments.json", Charset.defaultCharset());
             ISSUE_EVENT = IOUtils.resourceToString("/testIssueEvent.json", Charset.defaultCharset());
+            MR_EVENT = IOUtils.resourceToString("/testMergeRequestEvent.json", Charset.defaultCharset());
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }
@@ -72,6 +74,34 @@ class PsrcFromGitlabEventTest extends TestsSuite {
                             ),
                             "Issue Hook",
                             ISSUE_EVENT
+                        ),
+                        new PzlStatic(
+                            "Issue 1",
+                            ""
+                        ),
+                        new PzlStatic(
+                            "Issue 2",
+                            ""
+                        )
+                    )
+                )
+            ),
+            new TestCase(
+                "source produces correct puzzles from merge request",
+                new AssertAssumingMockServer(
+                    new MockSrvImplementation(
+                        8080,
+                        req -> req.withPath("/projects/1/merge_requests/1/notes"),
+                        res -> res.withBody(COMMENTS)
+                    ),
+                    new AssertPuzzleSourceProducesCertainPuzzles(
+                        new PsrcFromGitlabEvent(
+                            new GlapiStatic(
+                                "http://localhost:8080",
+                                "fakeToken"
+                            ),
+                            "Merge Request Hook",
+                            MR_EVENT
                         ),
                         new PzlStatic(
                             "Issue 1",
