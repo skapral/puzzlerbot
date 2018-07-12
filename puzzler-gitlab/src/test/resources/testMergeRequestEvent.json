@@ -1,0 +1,131 @@
+{
+  "object_kind": "merge_request",
+  "event_type": "merge_request",
+  "user": {
+    "name": "Sergey Kapralov",
+    "username": "skapral",
+    "avatar_url": "https://assets.gitlab-static.net/uploads/-/system/user/avatar/2361626/avatar.png"
+  },
+  "project": {
+    "id": 1,
+    "name": "_testing",
+    "description": "",
+    "web_url": "https://gitlab.com/skapral/_testing",
+    "avatar_url": null,
+    "git_ssh_url": "git@gitlab.com:skapral/_testing.git",
+    "git_http_url": "https://gitlab.com/skapral/_testing.git",
+    "namespace": "skapral",
+    "visibility_level": 20,
+    "path_with_namespace": "skapral/_testing",
+    "default_branch": "master",
+    "ci_config_path": null,
+    "homepage": "https://gitlab.com/skapral/_testing",
+    "url": "git@gitlab.com:skapral/_testing.git",
+    "ssh_url": "git@gitlab.com:skapral/_testing.git",
+    "http_url": "https://gitlab.com/skapral/_testing.git"
+  },
+  "object_attributes": {
+    "assignee_id": null,
+    "author_id": 2361626,
+    "created_at": "2018-06-06 18:34:49 UTC",
+    "description": "Closes #7",
+    "head_pipeline_id": null,
+    "id": 12249683,
+    "iid": 1,
+    "last_edited_at": "2018-07-12 22:04:13 UTC",
+    "last_edited_by_id": 2361626,
+    "merge_commit_sha": "e33e2fe69d4975b1611fee571555cb7ba32bf0f4",
+    "merge_error": null,
+    "merge_params": {
+      "force_remove_source_branch": "0"
+    },
+    "merge_status": "can_be_merged",
+    "merge_user_id": null,
+    "merge_when_pipeline_succeeds": false,
+    "milestone_id": null,
+    "source_branch": "7-proba-issue",
+    "source_project_id": 1,
+    "state": "merged",
+    "target_branch": "master",
+    "target_project_id": 1,
+    "time_estimate": 0,
+    "title": "Resolve \"Proba issue\"",
+    "updated_at": "2018-07-12 22:05:55 UTC",
+    "updated_by_id": 2361626,
+    "url": "https://gitlab.com/skapral/_testing/merge_requests/1",
+    "source": {
+      "id": 1,
+      "name": "_testing",
+      "description": "",
+      "web_url": "https://gitlab.com/skapral/_testing",
+      "avatar_url": null,
+      "git_ssh_url": "git@gitlab.com:skapral/_testing.git",
+      "git_http_url": "https://gitlab.com/skapral/_testing.git",
+      "namespace": "skapral",
+      "visibility_level": 20,
+      "path_with_namespace": "skapral/_testing",
+      "default_branch": "master",
+      "ci_config_path": null,
+      "homepage": "https://gitlab.com/skapral/_testing",
+      "url": "git@gitlab.com:skapral/_testing.git",
+      "ssh_url": "git@gitlab.com:skapral/_testing.git",
+      "http_url": "https://gitlab.com/skapral/_testing.git"
+    },
+    "target": {
+      "id": 1,
+      "name": "_testing",
+      "description": "",
+      "web_url": "https://gitlab.com/skapral/_testing",
+      "avatar_url": null,
+      "git_ssh_url": "git@gitlab.com:skapral/_testing.git",
+      "git_http_url": "https://gitlab.com/skapral/_testing.git",
+      "namespace": "skapral",
+      "visibility_level": 20,
+      "path_with_namespace": "skapral/_testing",
+      "default_branch": "master",
+      "ci_config_path": null,
+      "homepage": "https://gitlab.com/skapral/_testing",
+      "url": "git@gitlab.com:skapral/_testing.git",
+      "ssh_url": "git@gitlab.com:skapral/_testing.git",
+      "http_url": "https://gitlab.com/skapral/_testing.git"
+    },
+    "last_commit": {
+      "id": "443e63f486848bdaed4b956c70cc02f3bfb77503",
+      "message": "Add new file",
+      "timestamp": "2018-07-12T22:05:35Z",
+      "url": "https://gitlab.com/skapral/_testing/commit/443e63f486848bdaed4b956c70cc02f3bfb77503",
+      "author": {
+        "name": "Sergey Kapralov",
+        "email": "skapralov@mail.ru"
+      }
+    },
+    "work_in_progress": false,
+    "total_time_spent": 0,
+    "human_total_time_spent": null,
+    "human_time_estimate": null,
+    "action": "merge"
+  },
+  "labels": [
+
+  ],
+  "changes": {
+    "state": {
+      "previous": "locked",
+      "current": "merged"
+    },
+    "updated_at": {
+      "previous": "2018-07-12 22:05:55 UTC",
+      "current": "2018-07-12 22:05:55 UTC"
+    },
+    "total_time_spent": {
+      "previous": null,
+      "current": 0
+    }
+  },
+  "repository": {
+    "name": "_testing",
+    "url": "git@gitlab.com:skapral/_testing.git",
+    "description": "",
+    "homepage": "https://gitlab.com/skapral/_testing"
+  }
+}

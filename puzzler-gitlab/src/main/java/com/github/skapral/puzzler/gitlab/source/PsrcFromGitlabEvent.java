@@ -89,27 +89,31 @@ public class PsrcFromGitlabEvent extends PsrcInferred {
         @Override
         public final PuzzleSource puzzleSource() {
             final Option<JSONObject> jsonObject;
+            final String endpoint;
             switch(eventType.toLowerCase()) {
                 case "issue hook": {
+                    endpoint = "issues";
                     jsonObject = Option.of(new JSONObject(eventBody))
                         .filter(jo -> jo.getJSONObject("object_attributes").has("action"))
                         .filter(jo -> "close".equals(jo.getJSONObject("object_attributes").getString("action")));
                     break;
                 }
                 case "merge request hook": {
-                    jsonObject = Option.none();
-                    // To be supported later
+                    endpoint = "merge_requests";
+                    jsonObject = Option.of(new JSONObject(eventBody))
+                        .filter(jo -> jo.getJSONObject("object_attributes").has("action"))
+                        .filter(jo -> "merge".equals(jo.getJSONObject("object_attributes").getString("action")));
                     break;
                 }
                 default: {
-                    jsonObject = Option.none();
+                    return new PsrcStatic();
                 }
             }
             return jsonObject
                 .<PuzzleSource>map(obj -> {
                     final String commentsUrl = api.url()
                         + "/projects/" + obj.getJSONObject("project").get("id")
-                        + "/issues/" + obj.getJSONObject("object_attributes").get("iid")
+                        + "/" + endpoint + "/" + obj.getJSONObject("object_attributes").get("iid")
                         + "/notes";
                     final HttpGet request = new HttpGet(commentsUrl);
                     request.addHeader(
