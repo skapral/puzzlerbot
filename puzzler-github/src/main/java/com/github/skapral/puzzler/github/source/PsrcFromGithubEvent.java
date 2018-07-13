@@ -64,7 +64,6 @@ public class PsrcFromGithubEvent extends PsrcInferred {
      * The {@link PsrcFromGithubEvent} inference.
      *
      * @author Kapralov Sergey
-     * @todo #27 refactor this class by splitting it to smaller composable components
      */
     private static class Inference implements PuzzleSource.Inference {
         private final String eventType;
