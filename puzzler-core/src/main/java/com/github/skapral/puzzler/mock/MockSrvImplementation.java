@@ -31,6 +31,7 @@ import org.mockserver.client.server.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
 import org.mockserver.model.HttpRequest;
 import org.mockserver.model.HttpResponse;
+import org.mockserver.verify.VerificationTimes;
 
 import java.util.Objects;
 import java.util.function.Function;
@@ -105,6 +106,10 @@ public class MockSrvImplementation implements MockServer {
 
     @Override
     public final void destroy() {
+        ctx.get().verify(
+            reqFn.apply(HttpRequest.request()),
+            VerificationTimes.atLeast(1)
+        );
         ctx.stop();
     }
 
@@ -132,6 +137,13 @@ public class MockSrvImplementation implements MockServer {
          */
         public void start() {
             clientAndServer = startClientAndServer(port);
+        }
+
+        /**
+         * Get {@link ClientAndServer}
+         */
+        public ClientAndServer get() {
+            return clientAndServer;
         }
 
         /**
