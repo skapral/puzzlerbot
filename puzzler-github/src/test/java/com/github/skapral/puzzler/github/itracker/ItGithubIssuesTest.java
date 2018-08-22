@@ -37,7 +37,15 @@ import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.mockserver.model.JsonBody;
 
+/**
+ * Tests suite for {@link ItGithubIssues}
+ *
+ * @author Kapralov Sergey
+ */
 class ItGithubIssuesTest extends TestsSuite {
+    /**
+     * Ctor.
+     */
     public ItGithubIssuesTest() {
         super(
             new TestCase(

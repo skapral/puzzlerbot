@@ -29,7 +29,15 @@ package com.github.skapral.puzzler.core.config;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 
+/**
+ * Tests suite for {@link CpOneOf}
+ *
+ * @author Kapralov Sergey
+ */
 class CpOneOfTest extends TestsSuite {
+    /**
+     * Ctor.
+     */
     public CpOneOfTest() {
         super(
             new TestCase(

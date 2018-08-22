@@ -37,6 +37,11 @@ import org.apache.commons.io.IOUtils;
 
 import java.nio.charset.Charset;
 
+/**
+ * Tests suite for {@link PsrcFromGithubEvent}
+ *
+ * @author Kapralov Sergey
+ */
 class PsrcFromGithubEventTest extends TestsSuite {
     private static final String COMMENTS;
     private static final String ISSUE_EVENT;
@@ -52,7 +57,9 @@ class PsrcFromGithubEventTest extends TestsSuite {
         }
     }
 
-
+    /**
+     * Ctor.
+     */
     public PsrcFromGithubEventTest() {
         super(
             new TestCase(

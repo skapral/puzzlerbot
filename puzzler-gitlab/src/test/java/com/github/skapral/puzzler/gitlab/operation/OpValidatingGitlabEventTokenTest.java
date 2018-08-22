@@ -34,7 +34,16 @@ import com.github.skapral.puzzler.core.operation.OpDoNothing;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 
+
+/**
+ * Tests suite for {@link OpValidatingGitlabEventToken}
+ *
+ * @author Kapralov Sergey
+ */
 class OpValidatingGitlabEventTokenTest extends TestsSuite {
+    /**
+     * Ctor.
+     */
     public OpValidatingGitlabEventTokenTest() {
         super(
             new TestCase(

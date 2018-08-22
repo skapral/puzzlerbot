@@ -28,6 +28,11 @@ package com.github.skapral.puzzler.core.text.threepars;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 
+/**
+ * Tests suite for {@link TxtStandard}
+ *
+ * @author Kapralov Sergey
+ */
 class TxtStandardTest extends TestsSuite {
     public TxtStandardTest() {
         super(

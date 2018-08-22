@@ -7,6 +7,11 @@ import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.apache.commons.io.IOUtils;
 
+/**
+ * Tests suite for {@link OpIgnoringUnprivildgedEventSender}
+ *
+ * @author Kapralov Sergey
+ */
 class OpIgnoringUnprivildgedEventSenderTest extends TestsSuite {
     private static final String OWNER_IS_SENDER;
     private static final String OWNER_IS_NOT_SENDER;
@@ -20,6 +25,9 @@ class OpIgnoringUnprivildgedEventSenderTest extends TestsSuite {
         }
     }
 
+    /**
+     * Ctor.
+     */
     public OpIgnoringUnprivildgedEventSenderTest() {
         super(
             new TestCase(
