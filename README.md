@@ -4,6 +4,7 @@
 [![Build status (AppVeyor)](https://ci.appveyor.com/api/projects/status/1mwgh02plynasibk/branch/master?svg=true)](https://ci.appveyor.com/project/skapral/puzzlerbot/branch/master)
 
 [![Codecov](https://codecov.io/gh/skapral/puzzlerbot/branch/master/graph/badge.svg)](https://codecov.io/gh/skapral/puzzlerbot)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/41185c2a58e0467f964a9bc158c92029)](https://www.codacy.com/project/skapral/puzzlerbot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=skapral/puzzlerbot&amp;utm_campaign=Badge_Grade_Dashboard)
 
 @todo #31 to add some badge which will show the `@puzzlerbot`'s status.
 
