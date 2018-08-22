@@ -296,6 +296,7 @@
                                 <configuration>
                                     <sourceDirectories>
                                         <sourceDirectory>src/main/java</sourceDirectory>
+                                        <sourceDirectory>src/test/java</sourceDirectory>
                                     </sourceDirectories>
                                     <logViolationsToConsole>true</logViolationsToConsole>
                                     <configLocation>checkstyle.xml</configLocation>

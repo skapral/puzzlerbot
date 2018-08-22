@@ -31,7 +31,15 @@ import com.pragmaticobjects.oo.tests.AssertAssertionPasses;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 
+/**
+ * Tests suite for {@link AssertPuzzleHasCertainTitleAndDescription}
+ *
+ * @author Kapralov Sergey
+ */
 class AssertPuzzleHasCertainTitleAndDescriptionTest extends TestsSuite {
+    /**
+     * Ctor.
+     */
     public AssertPuzzleHasCertainTitleAndDescriptionTest() {
         super(
             new TestCase(
@@ -75,5 +83,4 @@ class AssertPuzzleHasCertainTitleAndDescriptionTest extends TestsSuite {
             )
         );
     }
-
 }

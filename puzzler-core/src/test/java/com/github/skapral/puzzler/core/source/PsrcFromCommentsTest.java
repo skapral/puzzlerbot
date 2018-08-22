@@ -5,7 +5,15 @@ import com.github.skapral.puzzler.core.text.threepars.TwStatic;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 
+/**
+ * Tests suite for {@link PsrcFromComments}
+ *
+ * @author Kapralov Sergey
+ */
 class PsrcFromCommentsTest extends TestsSuite {
+    /**
+     * Ctor.
+     */
     public PsrcFromCommentsTest() {
         super(
             new TestCase(

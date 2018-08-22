@@ -33,6 +33,11 @@ import org.apache.commons.io.IOUtils;
 
 import java.nio.charset.Charset;
 
+/**
+ * Tests suite for {@link PsrcFromGithubComments}
+ *
+ * @author Kapralov Sergey
+ */
 public class PsrcFromGithubCommentsTest extends TestsSuite {
     private static final String COMMENTS;
 
@@ -44,6 +49,9 @@ public class PsrcFromGithubCommentsTest extends TestsSuite {
         }
     }
 
+    /**
+     * Ctor.
+     */
     public PsrcFromGithubCommentsTest() {
         super(
             new TestCase(

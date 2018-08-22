@@ -34,6 +34,11 @@ import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.apache.commons.io.IOUtils;
 
+/**
+ * Tests suite for {@link OpValidatingGithubEventSignature}
+ *
+ * @author Kapralov Sergey
+ */
 class OpValidatingGithubEventSignatureTest extends TestsSuite {
     private static final String SIGNED_BODY;
 
@@ -45,6 +50,9 @@ class OpValidatingGithubEventSignatureTest extends TestsSuite {
         }
     }
 
+    /**
+     * Ctor.
+     */
     public OpValidatingGithubEventSignatureTest() {
         super(
             new TestCase(

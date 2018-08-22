@@ -26,20 +26,23 @@
 
 package com.github.skapral.puzzler.gitlab.source;
 
-import java.nio.charset.Charset;
-
-import com.github.skapral.puzzler.gitlab.location.GlapiStatic;
-import org.apache.commons.io.IOUtils;
-
-import com.github.skapral.puzzler.core.config.CpStatic;
 import com.github.skapral.puzzler.core.puzzle.PzlStatic;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesCertainPuzzles;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesNoPuzzles;
+import com.github.skapral.puzzler.gitlab.location.GlapiStatic;
 import com.github.skapral.puzzler.mock.AssertAssumingMockServer;
 import com.github.skapral.puzzler.mock.MockSrvImplementation;
 import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
+import org.apache.commons.io.IOUtils;
 
+import java.nio.charset.Charset;
+
+/**
+ * Tests suite for {@link PsrcFromGitlabEvent}
+ *
+ * @author Kapralov Sergey
+ */
 class PsrcFromGitlabEventTest extends TestsSuite {
     private static final String COMMENTS;
     private static final String ISSUE_EVENT;
@@ -55,7 +58,9 @@ class PsrcFromGitlabEventTest extends TestsSuite {
         }
     }
 
-
+    /**
+     * Ctor.
+     */
     public PsrcFromGitlabEventTest() {
         super(
             new TestCase(

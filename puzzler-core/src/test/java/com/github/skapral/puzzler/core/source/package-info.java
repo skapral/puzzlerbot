@@ -24,37 +24,4 @@
  *
  */
 
-package com.github.skapral.puzzler.core.operation;
-
-import com.github.skapral.puzzler.mock.MockSrvImplementation;
-import com.pragmaticobjects.oo.tests.AssertAssertionFails;
-import com.pragmaticobjects.oo.tests.TestCase;
-import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
-
-/**
- * Tests suite for {@link AssertOperationMakesHttpCallsOnMockServer}
- *
- * @author Kapralov Sergey
- */
-class AssertOperationMakesHttpCallsOnMockServerTest extends TestsSuite {
-    /**
-     * Ctor.
-     */
-    public AssertOperationMakesHttpCallsOnMockServerTest() {
-        super(
-            new TestCase(
-                "assertion fails when operation doesn't make HTTP request",
-                new AssertAssertionFails(
-                    new AssertOperationMakesHttpCallsOnMockServer(
-                        new MockSrvImplementation(
-                            8080,
-                            req -> req.withPath("/ping"),
-                            res -> res.withBody("pong")
-                        ),
-                        new OpDoNothing()
-                    )
-                )
-            )
-        );
-    }
-}
+package com.github.skapral.puzzler.core.source;

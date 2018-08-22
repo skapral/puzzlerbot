@@ -30,7 +30,15 @@ import com.pragmaticobjects.oo.tests.TestCase;
 import com.pragmaticobjects.oo.tests.junit5.TestsSuite;
 import org.apache.http.client.methods.HttpGet;
 
+/**
+ * Tests suite for {@link MockSrvImplementation}
+ *
+ * @author Kapralov Sergey
+ */
 class MockSrvImplementationTest extends TestsSuite {
+    /**
+     * Ctor.
+     */
     public MockSrvImplementationTest() {
         super(
             new TestCase(
