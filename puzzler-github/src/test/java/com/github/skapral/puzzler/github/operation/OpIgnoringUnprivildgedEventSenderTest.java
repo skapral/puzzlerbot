@@ -1,5 +1,7 @@
 package com.github.skapral.puzzler.github.operation;
 
+import java.io.InputStream;
+
 import com.github.skapral.puzzler.core.operation.AssertOperationFails;
 import com.github.skapral.puzzler.core.operation.AssertOperationSuccessful;
 import com.github.skapral.puzzler.core.operation.OpFail;
@@ -17,9 +19,10 @@ class OpIgnoringUnprivildgedEventSenderTest extends TestsSuite {
     private static final String OWNER_IS_NOT_SENDER;
 
     static {
-        try {
-            OWNER_IS_SENDER = IOUtils.toString(OpValidatingGithubEventSignature.class.getResource("ownerIsSender"));
-            OWNER_IS_NOT_SENDER = IOUtils.toString(OpValidatingGithubEventSignature.class.getResource("ownerIsNotSender"));
+        try (InputStream ownerIsSenderStream = OpValidatingGithubEventSignature.class.getResource("ownerIsSender").openStream();
+             InputStream ownerIsNotSenderStream = OpValidatingGithubEventSignature.class.getResource("ownerIsNotSender").openStream()) {
+            OWNER_IS_SENDER = IOUtils.toString(ownerIsSenderStream, "UTF-8");
+            OWNER_IS_NOT_SENDER = IOUtils.toString(ownerIsNotSenderStream, "UTF-8");
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }

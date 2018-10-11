@@ -25,6 +25,8 @@
 
 package com.github.skapral.puzzler.github.operation;
 
+import java.io.InputStream;
+
 import com.github.skapral.puzzler.core.config.CpMissingValue;
 import com.github.skapral.puzzler.core.config.CpStatic;
 import com.github.skapral.puzzler.core.operation.AssertOperationFails;
@@ -43,8 +45,8 @@ class OpValidatingGithubEventSignatureTest extends TestsSuite {
     private static final String SIGNED_BODY;
 
     static {
-        try {
-            SIGNED_BODY = IOUtils.toString(OpValidatingGithubEventSignature.class.getResource("signedBody"));
+        try (InputStream signedBodyStream = OpValidatingGithubEventSignature.class.getResource("signedBody").openStream()) {
+            SIGNED_BODY = IOUtils.toString(signedBodyStream, "UTF-8");
         } catch(Exception ex) {
             throw new RuntimeException(ex);
         }
