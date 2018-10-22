@@ -1,7 +1,7 @@
 /*
  * MIT License
  *
- * Copyright (c) 2018 Kapralov Sergey
+ * Copyright (c) %today.year Kapralov Sergey
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,23 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  *
+ *
  */
 
-package com.github.skapral.puzzler.github.text.threepars;
+package com.github.skapral.puzzler.github.config;
 
-import com.github.skapral.puzzler.core.text.threepars.TwStatic;
-import com.github.skapral.puzzler.github.config.Cp_GITHUB_PUZZLERBOT_USER;
+import com.github.skapral.puzzler.core.config.CpEnvironment;
 
 /**
- * Puzzler bot's account used as trigger word for creating puzzles.
+ * GITHUB_PUZZLERBOT_USER environment variable's value
  *
- * @author Kapralov Sergey
+ * @author Sebastian Gorecki
  */
-public class TwPuzzlerbotUser extends TwStatic {
+public class Cp_GITHUB_PUZZLERBOT_USER extends CpEnvironment {
     /**
      * Ctor.
      */
-    public TwPuzzlerbotUser() {
-        super(new Cp_GITHUB_PUZZLERBOT_USER().optionalValue().getOrElse("@puzzlerbot"));
+    public Cp_GITHUB_PUZZLERBOT_USER() {
+        super("GITHUB_PUZZLERBOT_USER");
     }
 }
