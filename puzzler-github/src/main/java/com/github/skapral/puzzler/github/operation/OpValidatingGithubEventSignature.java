@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.github.operation;
 
-import com.github.skapral.puzzler.core.config.ConfigProperty;
+import com.github.skapral.config.ConfigProperty;
 import com.github.skapral.puzzler.core.Operation;
 import org.apache.commons.codec.binary.Hex;
 

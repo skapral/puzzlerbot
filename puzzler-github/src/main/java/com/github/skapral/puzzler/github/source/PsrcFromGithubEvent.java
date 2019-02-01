@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.github.source;
 
-import com.github.skapral.puzzler.core.config.ConfigProperty;
+import com.github.skapral.config.ConfigProperty;
 import com.github.skapral.puzzler.core.PuzzleSource;
 import com.github.skapral.puzzler.core.source.PsrcInferred;
 import com.github.skapral.puzzler.core.source.PsrcStatic;

@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.gitlab.location;
 
-import com.github.skapral.puzzler.core.config.ConfigProperty;
+import com.github.skapral.config.ConfigProperty;
 
 /**
  * Gitlab.com API.

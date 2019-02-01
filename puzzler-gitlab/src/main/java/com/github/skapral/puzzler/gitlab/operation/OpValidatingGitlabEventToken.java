@@ -26,7 +26,7 @@
 package com.github.skapral.puzzler.gitlab.operation;
 
 import com.github.skapral.puzzler.core.Operation;
-import com.github.skapral.puzzler.core.config.ConfigProperty;
+import com.github.skapral.config.ConfigProperty;
 
 import java.util.function.Function;
 

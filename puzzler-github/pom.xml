@@ -43,5 +43,9 @@
             <artifactId>mockserver-netty</artifactId>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>com.github.skapral.config</groupId>
+            <artifactId>config-properties</artifactId>
+        </dependency>
     </dependencies>
 </project>

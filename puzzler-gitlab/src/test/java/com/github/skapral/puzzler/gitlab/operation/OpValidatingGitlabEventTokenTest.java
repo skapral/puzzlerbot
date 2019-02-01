@@ -26,7 +26,7 @@
 package com.github.skapral.puzzler.gitlab.operation;
 
 
-import com.github.skapral.puzzler.core.config.CpStatic;
+import com.github.skapral.config.CpStatic;
 import com.github.skapral.puzzler.core.operation.AssertOperationFails;
 import com.github.skapral.puzzler.core.operation.AssertOperationSuccessful;
 import com.github.skapral.puzzler.core.operation.OpDoNothing;

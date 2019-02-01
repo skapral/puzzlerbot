@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.gitlab.config;
 
-import com.github.skapral.puzzler.core.config.CpEnvironment;
+import com.github.skapral.config.CpEnvironment;
 
 /**
  * GITLAB_HOOK_SECRET environment variable's value
