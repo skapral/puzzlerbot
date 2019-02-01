@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.github.source;
 
-import com.github.skapral.puzzler.core.config.CpStatic;
+import com.github.skapral.config.CpStatic;
 import com.github.skapral.puzzler.core.puzzle.PzlStatic;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesCertainPuzzles;
 import com.github.skapral.puzzler.core.source.AssertPuzzleSourceProducesNoPuzzles;

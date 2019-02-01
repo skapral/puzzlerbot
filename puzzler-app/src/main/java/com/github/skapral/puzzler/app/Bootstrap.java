@@ -25,8 +25,8 @@
 
 package com.github.skapral.puzzler.app;
 
+import com.github.skapral.jersey.se.SrvGrizzlyWithJersey;
 import com.github.skapral.puzzler.config.Cp_PORT;
-import com.github.skapral.puzzler.web.SrvGrizzlyWithJersey;
 import com.github.skapral.puzzler.web.jersey.PuzzlerAPI;
 import com.pragmaticobjects.oo.atom.anno.NotAtom;
 
@@ -48,5 +48,8 @@ public class Bootstrap {
             new Cp_PORT(),
             new PuzzlerAPI()
         ).start();
+        while(true) {
+            System.in.read();
+        }
     }
 }

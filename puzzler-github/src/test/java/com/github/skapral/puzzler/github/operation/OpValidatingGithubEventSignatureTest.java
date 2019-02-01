@@ -27,8 +27,8 @@ package com.github.skapral.puzzler.github.operation;
 
 import java.io.InputStream;
 
-import com.github.skapral.puzzler.core.config.CpMissingValue;
-import com.github.skapral.puzzler.core.config.CpStatic;
+import com.github.skapral.config.CpMissingValue;
+import com.github.skapral.config.CpStatic;
 import com.github.skapral.puzzler.core.operation.AssertOperationFails;
 import com.github.skapral.puzzler.core.operation.AssertOperationSuccessful;
 import com.github.skapral.puzzler.core.operation.OpDoNothing;

@@ -25,9 +25,9 @@
 
 package com.github.skapral.puzzler.config;
 
-import com.github.skapral.puzzler.core.config.CpEnvironment;
-import com.github.skapral.puzzler.core.config.CpOneOf;
-import com.github.skapral.puzzler.core.config.CpStatic;
+import com.github.skapral.config.CpOneOf;
+import com.github.skapral.config.CpEnvironment;
+import com.github.skapral.config.CpStatic;
 
 /**
  * PORT environment variable's value.

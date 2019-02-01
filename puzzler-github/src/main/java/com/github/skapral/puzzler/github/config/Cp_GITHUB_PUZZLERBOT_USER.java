@@ -25,7 +25,7 @@
 
 package com.github.skapral.puzzler.github.config;
 
-import com.github.skapral.puzzler.core.config.CpEnvironment;
+import com.github.skapral.config.CpEnvironment;
 
 /**
  * GITHUB_PUZZLERBOT_USER environment variable's value
