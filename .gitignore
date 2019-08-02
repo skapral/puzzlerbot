@@ -6,3 +6,4 @@
 **/jacoco.exec
 **/*.versionsBackup
 **/dependency-reduced-pom.xml
+.env
