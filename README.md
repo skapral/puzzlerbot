@@ -2,11 +2,7 @@
 
 [![Build Status (Travis)](https://img.shields.io/travis/skapral/puzzlerbot/master.svg)](https://travis-ci.org/skapral/puzzlerbot)
 [![Build status (AppVeyor)](https://ci.appveyor.com/api/projects/status/1mwgh02plynasibk/branch/master?svg=true)](https://ci.appveyor.com/project/skapral/puzzlerbot/branch/master)
-
 [![Codecov](https://codecov.io/gh/skapral/puzzlerbot/branch/master/graph/badge.svg)](https://codecov.io/gh/skapral/puzzlerbot)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/41185c2a58e0467f964a9bc158c92029)](https://www.codacy.com/project/skapral/puzzlerbot/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=skapral/puzzlerbot&amp;utm_campaign=Badge_Grade_Dashboard)
-
-@todo #31 to add some badge which will show the `@puzzlerbot`'s status.
 
 ## Notice:
 
@@ -82,7 +78,7 @@ Consider comment with this text:
 ```
 @puzzlebot FYI
 
-Something weird happened with the system, heeds to be fixed.
+Something weird happened with the system, needs to be fixed.
 
 Steps to reproduce:
 0. Preconditions
