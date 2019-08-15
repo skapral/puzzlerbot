@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp puzzler-app/target/puzzler-app-*.jar com.github.skapral.puzzler.app.Bootstrap
+web: java $JAVA_OPTS -jar puzzler-app/target/puzzler-app-*.jar
