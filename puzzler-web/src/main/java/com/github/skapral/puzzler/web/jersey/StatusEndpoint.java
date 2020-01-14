@@ -45,7 +45,7 @@ public class StatusEndpoint {
      */
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    public String status() {
+    public final String status() {
         return "OK";
     }
 }
