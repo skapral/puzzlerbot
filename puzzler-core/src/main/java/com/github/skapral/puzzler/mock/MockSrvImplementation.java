@@ -26,7 +26,6 @@
 package com.github.skapral.puzzler.mock;
 
 import com.pragmaticobjects.oo.atom.anno.NotAtom;
-import org.mockserver.client.server.MockServerClient;
 import org.mockserver.integration.ClientAndServer;
 import org.mockserver.model.HttpRequest;
 import org.mockserver.model.HttpResponse;
@@ -34,6 +33,7 @@ import org.mockserver.verify.VerificationTimes;
 
 import java.util.Objects;
 import java.util.function.Function;
+import org.mockserver.client.MockServerClient;
 
 import static org.mockserver.integration.ClientAndServer.startClientAndServer;
 
