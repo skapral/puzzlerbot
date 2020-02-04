@@ -25,7 +25,6 @@
  */
 package com.github.skapral.puzzler.web.jersey;
 
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import org.glassfish.jersey.server.ResourceConfig;
 
 /**
@@ -33,7 +32,6 @@ import org.glassfish.jersey.server.ResourceConfig;
  *
  * @author Kapralov Sergey
  */
-@NotAtom
 public class PuzzlerAPI extends ResourceConfig {
     /**
      * Ctor.

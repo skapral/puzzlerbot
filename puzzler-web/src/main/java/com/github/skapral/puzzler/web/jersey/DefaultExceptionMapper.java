@@ -25,8 +25,6 @@
  */
 package com.github.skapral.puzzler.web.jersey;
 
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
-
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -38,7 +36,6 @@ import javax.ws.rs.ext.Provider;
  *
  * @author Kapralov Sergey
  */
-@NotAtom
 @Provider
 public class DefaultExceptionMapper implements ExceptionMapper<Throwable> {
     @Override

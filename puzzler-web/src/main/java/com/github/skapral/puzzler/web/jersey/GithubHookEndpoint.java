@@ -34,7 +34,6 @@ import com.github.skapral.puzzler.github.operation.OpIgnoringUnprivildgedEventSe
 import com.github.skapral.puzzler.github.operation.OpValidatingGithubEventSignature;
 import com.github.skapral.puzzler.github.project.GprjFromGithubEvent;
 import com.github.skapral.puzzler.github.source.PsrcFromGithubEvent;
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -48,7 +47,6 @@ import static com.github.skapral.puzzler.web.jersey.AuthenticationExceptionMappe
  *
  * @author Kapralov Sergey
  */
-@NotAtom
 @Path("github")
 public class GithubHookEndpoint {
     /**

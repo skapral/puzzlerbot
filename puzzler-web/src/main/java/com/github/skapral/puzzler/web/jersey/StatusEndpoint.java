@@ -25,8 +25,6 @@
  */
 package com.github.skapral.puzzler.web.jersey;
 
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -37,7 +35,6 @@ import javax.ws.rs.core.MediaType;
  *
  * @author Kapralov Sergey
  */
-@NotAtom
 @Path("status")
 public class StatusEndpoint {
     /**

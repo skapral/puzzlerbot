@@ -28,14 +28,12 @@ package com.github.skapral.puzzler.app;
 import com.github.skapral.jersey.se.SrvGrizzlyWithJersey;
 import com.github.skapral.puzzler.config.Cp_PORT;
 import com.github.skapral.puzzler.web.jersey.PuzzlerAPI;
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
 
 /**
  * Starting point.
  *
  * @author Kapralov Sergey
  */
-@NotAtom
 public class Bootstrap {
     /**
      * Main.

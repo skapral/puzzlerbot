@@ -25,8 +25,6 @@
  */
 package com.github.skapral.puzzler.web.jersey;
 
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
-
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
@@ -38,7 +36,6 @@ import static com.github.skapral.puzzler.web.jersey.AuthenticationExceptionMappe
  *
  * @author Kapralov Sergey
  */
-@NotAtom
 @Provider
 public class AuthenticationExceptionMapper implements ExceptionMapper<AuthenticationException> {
     /**
@@ -46,7 +43,6 @@ public class AuthenticationExceptionMapper implements ExceptionMapper<Authentica
      *
      * @author Kapralov Sergey
      */
-    @NotAtom
     public static final class AuthenticationException extends RuntimeException {
         /**
          * Ctor.

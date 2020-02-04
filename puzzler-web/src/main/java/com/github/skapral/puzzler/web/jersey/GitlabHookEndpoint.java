@@ -33,7 +33,6 @@ import com.github.skapral.puzzler.gitlab.location.GlapiProduction;
 import com.github.skapral.puzzler.gitlab.operation.OpValidatingGitlabEventToken;
 import com.github.skapral.puzzler.gitlab.project.GprjFromGitlabEvent;
 import com.github.skapral.puzzler.gitlab.source.PsrcFromGitlabEvent;
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
@@ -42,7 +41,6 @@ import javax.ws.rs.core.Response;
  *
  * @author Kapralov Sergey
  */
-@NotAtom
 @Path("gitlab")
 public class GitlabHookEndpoint {
     /**

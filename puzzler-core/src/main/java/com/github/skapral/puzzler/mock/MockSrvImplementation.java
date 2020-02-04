@@ -25,7 +25,6 @@
  */
 package com.github.skapral.puzzler.mock;
 
-import com.pragmaticobjects.oo.atom.anno.NotAtom;
 import org.mockserver.integration.ClientAndServer;
 import org.mockserver.model.HttpRequest;
 import org.mockserver.model.HttpResponse;
@@ -115,7 +114,6 @@ public class MockSrvImplementation implements MockServer {
      *
      * @author Kapralov Sergey
      */
-    @NotAtom
     private static final class MockServerContext {
         private final int port;
         private ClientAndServer clientAndServer;
